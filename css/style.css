@@ -1,3 +1,5 @@
+@import url('font.css');
+
 html{
     font-size: 5vw;
 }
@@ -14,7 +16,7 @@ body{
     --couleur-light:#82CAFF;
     --couleur-dark:#31429A;
     font-size: 0.4rem;
-    font-family: 'basic', cursive;
+    font-family: 'Kaushan Script', cursive;
 }
 
 /*  menu burger qui ressort du haut en demi-cercle.
@@ -23,6 +25,7 @@ body{
 
 .rangement-menu{    
     position:fixed;
+    z-index: 10;
     height: 200px;
     width: 200px;
     left: 50%;
@@ -42,6 +45,7 @@ body{
 
 .menu-burger-label{
     margin-bottom: 20px;
+    z-index: 10;
 }
 
 .menu-burger-label img{
@@ -58,6 +62,7 @@ body{
     position : absolute;
     right:10%;
     top:calc(40px - 0.1rem);
+    z-index: 10;
 }
 
 .dark-mode-inner-label{
@@ -99,6 +104,7 @@ body{
     top:50px;
     left:10%;
     width: 60vw;
+    z-index: 10;
 }
 
 .menu ul{
@@ -122,13 +128,101 @@ body{
 
 /*main*/
 
+/*section accueil*/
+
 #accueil{
     height: 100vh;
     background-color: var(--couleur-light);
     transition-duration: 0.5s;
+    overflow: hidden;
+    position: relative;
+    color : black;
 }
 
 .on-off-dark-mode:checked ~ main #accueil{
     background-color: var(--couleur-dark);
     color: white;
+}
+
+
+/*balise flottante en fond*/
+
+.fond-anim{
+    position:absolute;
+    font-family: 'arial';
+    color : rgba(255,255,255,0.2);
+    font-size: 2rem;
+}
+
+#anim1{
+    left:18%;
+    top:13%;
+    transform: rotate(7deg);
+}
+
+#anim2{
+    left:68%;
+    top:16%;
+    transform: rotate(-9deg);
+}
+
+#anim3{
+    left:45%;
+    top:50%;
+    transform: rotate(-1deg);
+}
+
+#anim4{
+    left:8%;
+    top:70%;
+    transform: rotate(-6deg);
+}
+
+#anim5{
+    left:70%;
+    top:68%;
+    transform: rotate(14deg);
+}
+
+/*contenu principal de l'accueil*/
+
+.contenu-principal{
+    height: 80vh;
+    display: flex;
+    position : absolute;
+    bottom: 0;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100vw;
+}
+
+.contenu-principal h1{
+    position:relative;
+    font-size: 1rem;
+}
+
+.separateur{
+    width: 80%;
+    border: 1px solid black;
+    position: relative;
+    left : 10%;
+    margin: 0.7rem 0 0.3rem;
+}
+
+.petit-logo{
+    height: 1.5em;
+    position: relative;
+    top:0.30em;
+    left: calc(40% - 1.5em);
+    filter:brightness(0);
+    transition-duration: 0.5s;
+}
+
+.on-off-dark-mode:checked ~ main .petit-logo{
+    filter:brightness(1);
+}
+
+.telephone{
+    max-height: 80%;
+    max-width: 40%;
 }
