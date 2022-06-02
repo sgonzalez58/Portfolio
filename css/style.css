@@ -1,0 +1,134 @@
+html{
+    font-size: 5vw;
+}
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+/*variables couleurs principales*/
+
+body{
+    --couleur-light:#82CAFF;
+    --couleur-dark:#31429A;
+    font-size: 0.4rem;
+    font-family: 'basic', cursive;
+}
+
+/*  menu burger qui ressort du haut en demi-cercle.
+    disparait quand le menu est présent et réapparait lorsque menu
+    disparait.*/
+
+.rangement-menu{    
+    position:fixed;
+    height: 200px;
+    width: 200px;
+    left: 50%;
+    transform: translateY(-100%);
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/*image centré*/
+
+.menu-burger{
+    display: none;
+}
+
+.menu-burger-label{
+    margin-bottom: 20px;
+}
+
+.menu-burger-label img{
+    height: 60px;
+}
+
+/* bouton dark-mode*/
+
+.on-off-dark-mode{
+    display: none;
+}
+
+.dark-mode-label{    
+    position : absolute;
+    right:10%;
+    top:calc(40px - 0.1rem);
+}
+
+.dark-mode-inner-label{
+    width : 1.5rem;
+    height : 0.75rem;
+    background-color:var(--couleur-dark) ;
+    border : 5px solid black;    
+    border-radius: 40px;
+    position: relative;
+    box-sizing: content-box;
+    transition-duration: 1s;
+}
+
+.dark-mode-button{
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: var(--couleur-light);
+    border: 1px solid black;
+    border-radius: 50%;
+    position: relative;
+    left: 0;
+    transition-duration: 0.5s;
+}
+
+.on-off-dark-mode:checked ~ .dark-mode-label .dark-mode-button{
+    left: 0.75rem;
+    background-color: var(--couleur-dark);
+}
+
+.on-off-dark-mode:checked ~ .dark-mode-label .dark-mode-inner-label{
+    background-color: var(--couleur-light);
+}
+
+
+/*menu de navigation*/
+
+.menu{     
+    position:fixed;
+    top:50px;
+    left:10%;
+    width: 60vw;
+}
+
+.menu ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu li{
+    list-style: none;
+}
+
+.menu a{
+    text-decoration: none;
+    color: black;
+    transition-duration: 0.5s;
+}
+
+.on-off-dark-mode:checked ~ header .menu a{
+    color : white;
+}
+
+/*main*/
+
+#accueil{
+    height: 100vh;
+    background-color: var(--couleur-light);
+    transition-duration: 0.5s;
+}
+
+.on-off-dark-mode:checked ~ main #accueil{
+    background-color: var(--couleur-dark);
+    color: white;
+}
