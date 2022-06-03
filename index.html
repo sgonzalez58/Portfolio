@@ -8,13 +8,15 @@
         <title>Sergio Gonzalez</title>
     </head>
     <body>
+        <div class="zoneHaute"></div>
         <input type="checkbox" name="menu-burger" class="menu-burger" id="mon-menu-burger">
+          
+        <input type="checkbox" name="dark-mode" class="on-off-dark-mode" id="my-on-off-dark-mode">
         <div class="rangement-menu">            
             <label class="menu-burger-label" for="mon-menu-burger">
                 <img src="img/home logo bleu.svg" name="home logo">
             </label>
-        </div>        
-        <input type="checkbox" name="dark-mode" class="on-off-dark-mode" id="my-on-off-dark-mode">
+        </div>      
         <label class="dark-mode-label" for="my-on-off-dark-mode">
             <div class="dark-mode-inner-label">
                 <div class="dark-mode-button"></div>
@@ -74,6 +76,255 @@
                     <h1><strong>Gonzalez Sergio<br><div class="separateur"></div>Développeur Web<br>Fullstack</strong>
                     <img id='web-logo' class='petit-logo' src="img/logo web blanc.svg" alt="logo web"></h1>
                     <img class='telephone' src="img/Hands touching mobile.png" alt="image telephone">
+                </div>
+            </section>
+            <section id="aPropos">
+                <div class="fondAPropos">
+                    <p id = "fondCode" class="parallax">
+                        &lt;!DOCTYPE html&gt;<br>
+    &lt;html lang=&quot;fr&quot;&gt;<br>
+    <br>
+    &lt;head&gt;<br>
+    <br>
+    &lt;meta charset=&quot;UTF-8&quot;&gt;<br>
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;<br>
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br>
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/index.css&quot; /&gt;<br>
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/font.css&quot;/&gt;<br>
+    &lt;!-- &lt;meta http-equiv=&quot;refresh&quot; content=&quot;35; url=index.php&quot;&gt; Permet de redirig&eacute; la page sur une page choisis --&gt;<br>
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js&quot;&gt;&lt;/script&gt;<br>
+    &lt;script src=&#39;js/consulterArticle.js&#39; defer&gt;&lt;/script&gt;<br>
+    &lt;script src=&quot;js/carrousel.js&quot; defer&gt;&lt;/script&gt;<br>
+    <br>
+    &lt;/head&gt;<br>
+    &lt;body&gt;<br>
+    &lt;?php include_once (&#39;header.php&#39;);?&gt;<br>
+    &lt;main&gt;<br>
+    &lt;div id=&#39;modal&#39; class=&#39;modal&#39;&gt;&lt;/div&gt;<br>
+    &lt;?php<br>
+    $images = [];<br>
+    if($img_dir = @opendir(&#39;img/partage&#39;)){<br>
+    while (false !== ($img_file = readdir($img_dir))){<br>
+    if($img_file !== &#39;.&#39; &amp;&amp; $img_file !== &#39;..&#39;)<br>
+    $images[] = $img_file;<br>
+    }<br>
+    closedir($img_dir);<br>
+    }else{<br>
+    echo &#39;&lt;p style=\&#39;background-color:black;color:white;text-align:center;\&#39;&gt;Le dossier d\&#39;image n\&#39;existe pas !&lt;/p&gt;&#39;;<br>
+    }<br>
+    <br>
+    ?&gt;<br>
+    &lt;section class=&quot;section0&quot;&gt;<br>
+    <br>
+    &lt;div id=&quot;carrousel&quot;&gt;<br>
+    &lt;?php<br>
+    foreach($images as $image){<br>
+    ?&gt;<br>
+    &lt;img class=&quot;img_carrousel&quot; src=&quot;img/partage/&lt;?=$image?&gt;&quot; alt=&quot;photo&quot;&gt;<br>
+    &lt;?php<br>
+    }<br>
+    ?&gt;<br>
+    &lt;/div&gt;<br>
+    <br>
+    &lt;/section&gt;<br>
+    <br>
+    &lt;section class=&quot;section1&quot;&gt;<br>
+    <br>
+    &lt;div class=&quot;conteneur&quot;&gt;<br>
+    <br>
+    &lt;h2 id=&quot;titre_cont&quot;&gt;<br>
+    Nos prestations<br>
+    &lt;/h2&gt;<br>
+    <br>
+    &lt;?php<br>
+    $sql = $con-&gt;prepare(&quot; SELECT a.* FROM articles as a, categories as c1, categories as c2<br>
+    WHERE a.Id_categorie = c1.Id_categorie &amp;&amp; c1.Parent = c2.Id_categorie &amp;&amp; c2.Nom LIKE &#39;Prestation&#39;<br>
+    ORDER BY Id_article DESC<br>
+    LIMIT 3&quot;);<br>
+    //demande sql pour r&eacute;cup&eacute;rer les articles exclusifs<br>
+    <br>
+    $sql-&gt;execute();<br>
+    $articles = $sql-&gt;fetchAll(PDO::FETCH_ASSOC);<br>
+    $i = 1;<br>
+    foreach($articles as $article){<br>
+    echo &#39; &lt;article class=\&#39;carte\&#39; id=\&#39;carte&#39;.$i.&#39;\&#39;onclick=\&#39;recupererArticle(this.firstElementChild.lastElementChild);\&#39;&gt;<br>
+    &lt;figure&gt;
+    &lt;img class=\&#39;img1\&#39; title=\&#39;&#39;.$article[&#39;Nom&#39;].&#39;\&#39; src=\&#39;img/&#39;.$article[&quot;Photo&quot;].&#39;\&#39; alt =\&#39;&#39;.$article[&#39;Nom&#39;].&#39;\&#39;/&gt;<br>
+    &lt;figcaption&gt;&#39;.$article[&quot;Nom&quot;].&#39;&lt;/figcaption&gt;<br>
+    &lt;/figure&gt;<br>
+    &lt;img class=\&#39;clou \&#39;src=\&#39;img/clou.png\&#39; id=\&#39;clou&#39;.$i.&#39;\&#39; alt=\&#39;clou\&#39;&gt; <br>
+    &lt;/article&gt;&#39;;<br>
+    $i++;<br>
+    }<br>
+    ?&gt;<br>
+    <br>
+    <br>
+    &lt;/section&gt;<br>
+    <br>
+    &lt;section class=&quot;section2&quot;&gt;<br>
+    <br>
+    &lt;div class=&quot;conteneur2&quot;&gt;<br>
+    <br>
+    &lt;img src=&quot;img/imgVecto2.png&quot; alt=&quot;image vectoriel en cuir&quot; id=&quot;img4&quot;&gt;<br>
+    <br>
+    &lt;img srcset=&quot;img/produitBarber-s.jpg 512w,<br>
+    img/produitBarber-l.jpg 850w&quot;<br>
+    sizes=&quot;(max-width:767px) 800px,<br>
+    (max-width:1023px) 500px,<br>
+    800px&quot;<br>
+    src=&quot;img/produitBarber-l.jpg&quot;<br>
+    alt=&quot;produit pour barber&quot;<br>
+    id=&quot;img2&quot;&gt;<br>
+    <br>
+    &lt;img src=&quot;img/coupe4-l.jpg&quot; alt=&quot;blaireau et accessoires&quot; id=&quot;img1&quot;&gt;<br>
+    <br>
+    &lt;img srcset=&quot;img/siegeBarber-s.jpg 512w,<br>
+    img/siegeBarber-l.jpg 900w&quot;<br>
+    sizes=&quot;(max-width:767px) 800px,<br>
+    (max-width:1023px) 500px,<br>
+    800px&quot;<br>
+    src=&quot;img/siegeBarber-l.jpg&quot;<br>
+    alt=&quot;si&egrave;ge de barber&quot;<br>
+    id=&quot;img3&quot;&gt;<br>
+    <br>
+    <br>
+    <br>
+    &lt;/div&gt;<br>
+    <br>
+    &lt;/section&gt;<br>
+    <br>
+    &lt;div id=&quot;separation&quot;&gt;&lt;/div&gt;<br>
+    <br>
+    &lt;section class=&quot;section3&quot;&gt;<br>
+    &lt;h2&gt;Nos produits de soin du moment&lt;/h2&gt;<br>
+    &lt;div id=&quot;presentation_soin&quot;&gt;<br>
+    &lt;?php<br>
+    $sql = $con-&gt;prepare(&quot; SELECT * FROM articles<br>
+    WHERE exclusivite = &#39;2&#39;<br>
+    ORDER BY Id_article DESC<br>
+    LIMIT 3&quot;);<br>
+    //demande sql pour r&eacute;cup&eacute;rer les articles exclusifs<br>
+    <br>
+    $sql-&gt;execute();<br>
+    $articles = $sql-&gt;fetchAll(PDO::FETCH_ASSOC);<br>
+    $i = 1;<br>
+    foreach($articles as $article){<br>
+    echo &#39; &lt;article id=\&#39;article&#39;.$i.&#39;\&#39; class=\&#39;article\&#39; onclick=\&#39;recupererArticle(this.firstElementChild.lastElementChild);\&#39;&gt;<br>
+    &lt;figure&gt;<br>
+    &lt;img class=\&#39;petit_image\&#39; title=\&#39;&#39;.$article[&#39;Nom&#39;].&#39;\&#39; src=\&#39;img/&#39;.$article[&quot;Photo&quot;].&#39;\&#39; alt =\&#39;&#39;.$article[&#39;Nom&#39;].&#39;\&#39;/&gt;<br>
+    &lt;figcaption&gt;&#39;.$article[&quot;Nom&quot;].&#39;&lt;/figcaption&gt;<br>
+    &lt;/figure&gt;<br>
+    &lt;/article&gt;&#39;;<br>
+    $i++;<br>
+    }<br>
+    ?&gt;<br>
+    &lt;/div&gt;<br>
+    &lt;/section&gt;<br>
+    <br>
+    <br>
+    &lt;/main&gt;<br>
+    &lt;?php include_once (&#39;footer.php&#39;);?&gt;<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+                    </p>
+                </div>
+                <div class="cartePresentation parallax">
+                    <div>
+                        <p>
+                            A propos de moi
+                        </p>
+                        <img alt="photo-visage">
+                        <p>
+                            Après quelques années d’étude dans le domaine du développement informatique, j’ai travaillé quelques années dans une radio locale où j’ai appris à travailler en équipe et à m’exprimer.
+                            <br><br>
+                            J’ai par la suite décidé de reprendre ma carrière dans le domaine de l’informatique et je suis actuellement une formation de Développeur Web au sein de l’Access Code School de Nevers.
+                            <br><br>
+                            Je souhaite acquérir de l’expérience et développer mes connaissances en développement web, voire même développer mon champs d’expertise dans le développement d’application ou de logiciel.
+                        </p>
+                        <a targer="blank">Mon CV</a>
+                    </div>
+                </div>
+            </section>
+            <section class="mesCompetences">
+                <h2>
+                    Mes compétences
+                </h2>
+                <div class="categorieCompetences">
+                    <div class="titreCompetences">
+                        <div class="trait"></div>
+                        <h3>
+                            Front end
+                        </h3>
+                        <div class="trait"></div>
+                    </div>
+                    <div class="listeCompetences">
+                        <figure class="competence">
+                            <img class="logoCompetence" src="img/JS logo blanc.svg" alt="javascript">
+                            <figcaption>
+                                <h4>JAVASCRIPT</h4>
+                            </figcaption>
+                        </figure>
+                        <figure class="competence">
+                            <img class="logoCompetence" src="img/HTML5 logo blanc.svg" alt="HTML5">
+                            <figcaption>
+                                <h4>HTML5</h4>
+                            </figcaption>
+                        </figure>
+                        <figure class="competence">
+                            <img class="logoCompetence" src="img/CSS3 logo blanc.svg" alt="CSS3">
+                            <figcaption>
+                                <h4>CSS3</h4>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="categorieCompetences">
+                    <div class="titreCompetences">
+                        <div class="trait"></div>
+                        <h3>
+                            Back end
+                        </h3>
+                        <div class="trait"></div>
+                    </div>
+                    <div class="listeCompetences">
+                        <figure class="competence">
+                            <img class="logoCompetence" src="img/PHP logo blanc.svg" alt="php">
+                            <figcaption>
+                                <h4>PHP</h4>
+                            </figcaption>
+                        </figure>
+                        <figure class="competence">
+                            <img class="logoCompetence" src="img/mySQL logo blanc.svg" alt="mysql">
+                            <figcaption>
+                                <h4>MySQL</h4>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+            <section class="mesProjets">
+                <div class="titreProjets">
+                    <h2>Les projets sur lesquels j'ai travaillé</h2>
+                </div>
+                <div class="listeProjets">
+                    <div class="projet">
+                        <img>
+                        <img>
+                        <img>
+                        <img>
+                    </div>
+                    <div class="projet">
+                        <img>
+                        <img>
+                        <img>
+                        <img>
+                    </div>
+                    <div class="projet">
+                        <img>
+                        <img>
+                        <img>
+                        <img>
+                    </div>
                 </div>
             </section>
         </main>
