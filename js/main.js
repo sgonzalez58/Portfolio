@@ -1,3 +1,9 @@
+/*Page en haut de page lors de l'actualisation*/
+
+window.onbeforeunload = function(){
+    window.scrollTo(0,0);
+}
+
 /*balises flottantes dans la section accueil*/
 
 const section = document.getElementById("accueil");
@@ -84,51 +90,65 @@ for(let j=0; j<parallax.length; j++){
     xStartingPositionParallax.push(parallax[j].style.top);
 }
 
-xPositionParallax[0] = xStartingPositionParallax[0] - window.scrollY * 2.5;
+function effetParallax(){
+    xPositionParallax[0] = xStartingPositionParallax[0] - window.scrollY * 3;
     xPositionParallax[1] = xStartingPositionParallax[1] - window.scrollY / 2;
     parallax[0].style.top = xPositionParallax[0] + 'px';
     parallax[1].style.top = xPositionParallax[1] + 'px';
+}
 
-window.addEventListener('scroll', ()=>{    
-    xPositionParallax[0] = xStartingPositionParallax[0] - window.scrollY * 2.5;
-    xPositionParallax[1] = xStartingPositionParallax[1] - window.scrollY / 2;
-    parallax[0].style.top = xPositionParallax[0] + 'px';
-    parallax[1].style.top = xPositionParallax[1] + 'px';
+effetParallax();
+window.addEventListener('scroll', effetParallax, true)
+
+window.addEventListener('scroll', ()=>{
+    if(window.innerHeight + parallax[1].clientHeight + xStartingPositionParallax[1] - window.scrollY / 2 < window.scrollY){
+        window.removeEventListener('scroll', effetParallax, true);
+    }else{
+        window.addEventListener('scroll', effetParallax, true)
+    }
 })
 
-/*Opacity section Mes Compétences */
+/*Opacity section Mes Compétences + Mes Projets */
 
-let mesCompetences = document.getElementsByClassName('mesCompetences')[0];
+let deuxiemePartie = document.getElementsByClassName('deuxiemePartie')[0];
 let categoriesCompetences = document.getElementsByClassName('categorieCompetences');
 let k;
 
 if(window.innerHeight + parallax[1].clientHeight + xStartingPositionParallax[1] - window.scrollY / 2 < window.scrollY){
     for(k = 0; k <categoriesCompetences.length; k++){
         categoriesCompetences[k].style.opacity = 1;
-        categoriesCompetences[k].style.transitionDelay = (k+1) +'s';
+        categoriesCompetences[k].style.transitionDelay = (k+1)/2 +'s';
     }
-    mesCompetences.style.opacity = 1;
+    deuxiemePartie.style.opacity = 1;
 }else{
     for(k = 0; k <categoriesCompetences.length; k++){
         categoriesCompetences[k].style.opacity = 0;
         categoriesCompetences[k].style.transitionDelay = 0 + 's';
     }
-    mesCompetences.style.opacity = 0;
+    deuxiemePartie.style.opacity = 0;
 }
 
-window.addEventListener('scroll', ()=>{
+window.addEventListener('scroll', apparitionCompetences=>{
     if(window.innerHeight + parallax[1].clientHeight + xStartingPositionParallax[1] - window.scrollY / 2 < window.scrollY){
         for(k = 0; k <categoriesCompetences.length; k++){
             categoriesCompetences[k].style.opacity = 1;
-            categoriesCompetences[k].style.transitionDelay = (k+1) +'s';
+            categoriesCompetences[k].style.transitionDelay = (k+1)/2 +'s';
         }
-        mesCompetences.style.opacity = 1;
+        deuxiemePartie.style.opacity = 1;
     }else{
         for(k = 0; k <categoriesCompetences.length; k++){
             categoriesCompetences[k].style.opacity = 0;
             categoriesCompetences[k].style.transitionDelay = 0 + 's';
         }
-        mesCompetences.style.opacity = 0;
+        deuxiemePartie.style.opacity = 0;
     }
 })
 
+function placementCompetencesProjets(){
+    if(window.innerHeight + parallax[1].clientHeight + xStartingPositionParallax[1] - window.scrollY / 2 < window.scrollY){
+        deuxiemePartie.style.top = parallax[1].clientHeight + xStartingPositionParallax[1] - window.scrollY / 2 + 'px';
+        window.removeEventListener('scroll', placementCompetencesProjets)
+    }
+}
+
+window.addEventListener('scroll', placementCompetencesProjets);
