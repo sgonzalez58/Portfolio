@@ -4,6 +4,10 @@ window.onbeforeunload = function(){
     window.scrollTo(0,0);
 }
 
+window.addEventListener('resize', ()=>{
+    window.location = 'index.html';
+})
+
 /*balises flottantes dans la section accueil*/
 
 const section = document.getElementById("accueil");
@@ -64,9 +68,9 @@ let zoneHaute = document.getElementsByClassName('zoneHaute');
 
 window.addEventListener('scroll', ()=>{
     rangementMenuCheck.checked = true;
-    rangementMenu[0].style.opacity = '0';
-    zoneHaute[0].style.height = '200px';
-    zoneHaute[0].style.maxHeight = '200px';
+    rangementMenu[0].style.opacity = '0.1';
+    zoneHaute[0].style.height = '2rem';
+    zoneHaute[0].style.maxHeight = '2rem';
 })
 
 zoneHaute[0].addEventListener('mouseover', ()=>{
@@ -75,9 +79,9 @@ zoneHaute[0].addEventListener('mouseover', ()=>{
 })
 
 rangementMenu[0].addEventListener('mouseleave', ()=>{
-    rangementMenu[0].style.opacity = '0';
-    zoneHaute[0].style.height = '200px';
-    zoneHaute[0].style.maxHeight = '200px';
+    rangementMenu[0].style.opacity = '0.1';
+    zoneHaute[0].style.height = '2rem';
+    zoneHaute[0].style.maxHeight = '2rem';
 })
 
 /*parallax*/
@@ -91,8 +95,8 @@ for(let j=0; j<parallax.length; j++){
 }
 
 function effetParallax(){
-    xPositionParallax[0] = xStartingPositionParallax[0] - window.scrollY * 3;
-    xPositionParallax[1] = xStartingPositionParallax[1] - window.scrollY / 2;
+    xPositionParallax[0] = xStartingPositionParallax[0] - Math.floor(window.scrollY * 3);
+    xPositionParallax[1] = xStartingPositionParallax[1] - Math.floor(window.scrollY / 2);
     parallax[0].style.top = xPositionParallax[0] + 'px';
     parallax[1].style.top = xPositionParallax[1] + 'px';
 }
@@ -152,3 +156,54 @@ function placementCompetencesProjets(){
 }
 
 window.addEventListener('scroll', placementCompetencesProjets);
+
+/* menu smooth scroll vers section */
+lienMenu = document.getElementsByTagName('li');
+console.log(window.innerHeight)
+mesSections = [0, 0, parallax[1].clientHeight + Math.floor(window.innerHeight * 0.1), parallax[1].clientHeight + deuxiemePartie.firstElementChild.clientHeight - 20, 0];
+
+for(let ii = 0; ii<mesSections.length; ii++){
+    lienMenu[ii].addEventListener('click', ()=>{
+        let tmp = setInterval(()=>{
+            if(ii==0){
+                if(window.scrollY > 0){
+                    window.scrollTo(0, Math.floor(window.scrollY - Math.max(1, (Math.floor((mesSections[ii] + window.scrollY)/50)))));
+                    console.log('up');
+                }else{
+                    clearInterval(tmp);
+                }
+            }else if(ii==4){
+                if(window.scrollY < document.body.scrollHeight - window.innerHeight){
+                    window.scrollTo(0, Math.floor(window.scrollY + Math.max(1, (Math.floor((document.body.scrollHeight - window.innerHeight - window.scrollY)/50)))));
+                }else{
+                    clearInterval(tmp);
+                }
+            }else{
+                if(window.scrollY < mesSections[ii] + window.innerHeight + parallax[1].offsetTop){
+                    window.scrollTo(0, Math.floor(window.scrollY + Math.max(1, (Math.floor((mesSections[ii] + window.innerHeight + parallax[1].offsetTop - window.scrollY)/50)))));
+                    console.log('down');
+                }else if(window.scrollY > mesSections[ii] + window.innerHeight + parallax[1].offsetTop){
+                    window.scrollTo(0, Math.floor(window.scrollY - Math.max(1, (Math.floor((mesSections[ii] + window.innerHeight + parallax[1].offsetTop + window.scrollY)/50)))));
+                    console.log('up');
+                }else{
+                    clearInterval(tmp);
+                }
+            }
+            
+        }, 1000/300)
+    })
+}
+
+/* ordre accueil paysage ou portrait */
+
+let accueil = document.getElementsByClassName('contenu-principal')[0];
+
+if (window.innerHeight > window.innerWidth){
+    accueil.style.flexDirection = 'column';
+    accueil.lastElementChild.style.maxHeight = '40%';
+    accueil.lastElementChild.style.maxWidth = '70%';
+}else{
+    accueil.style.flexDirection = 'row';
+    accueil.lastElementChild.style.maxHeight = '70%';
+    accueil.lastElementChild.style.maxWidth = '40%';
+}
