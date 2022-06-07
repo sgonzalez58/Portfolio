@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="js/main.js" defer></script>
         <title>Sergio Gonzalez</title>
     </head>
@@ -229,7 +230,7 @@
                             <br><br>
                             Je souhaite acquérir de l’expérience et développer mes connaissances en développement web, voire même développer mon champs d’expertise dans le développement d’application ou de logiciel.
                         </p>
-                        <a targer="blank">Mon CV</a>
+                        <a href="CV/CV_2022-06-07_SERGIO_GONZALEZ.pdf" target="blank">Mon CV</a>
                     </div>
                 </div>
             </section>
@@ -344,17 +345,21 @@
                 </section>
                 <section class='contact'>
                     <div class="volet">
-                        <form class="contactGauche">
+                        <div class="contactGauche">
                             <h6>N'hésitez pas à me contacter</h6>
                             <p> Je suis ouvert à toute proposition 
                                 et si vous avez une quelconque question 
                                 sur moi ou mes projets, envoyez-moi 
                                 un message via ce formulaire.</p>
+                            <p id="erreure"></p>
                             <input type="text" name="nom" id="nom" minlength="2" maxlength="30" required placeholder="Nom">
                             <input type="email" name="mail" id="mail" required placeholder="Mail">
                             <textarea name="message" id="message" required placeholder="Message" rows="4"></textarea>
-                            <input type="submit" value="Envoyer">
-                        </form>
+                            <button onclick="envoyerMessage(this);">
+                                Envoyer
+                            </button>
+
+                        </div>
                         <div class="contactDroite">
                             <h6>Suivez-moi</h6>
                             <div class="logos">

@@ -159,7 +159,6 @@ window.addEventListener('scroll', placementCompetencesProjets);
 
 /* menu smooth scroll vers section */
 lienMenu = document.getElementsByTagName('li');
-console.log(window.innerHeight)
 mesSections = [0, 0, parallax[1].clientHeight + Math.floor(window.innerHeight * 0.1), parallax[1].clientHeight + deuxiemePartie.firstElementChild.clientHeight - 20, 0];
 
 for(let ii = 0; ii<mesSections.length; ii++){
@@ -167,30 +166,27 @@ for(let ii = 0; ii<mesSections.length; ii++){
         let tmp = setInterval(()=>{
             if(ii==0){
                 if(window.scrollY > 0){
-                    window.scrollTo(0, Math.floor(window.scrollY - Math.max(1, (Math.floor((mesSections[ii] + window.scrollY)/50)))));
-                    console.log('up');
+                    window.scrollTo(0, Math.floor(window.scrollY - Math.max(1, (Math.floor((mesSections[ii] + window.scrollY)/10)))));
                 }else{
                     clearInterval(tmp);
                 }
             }else if(ii==4){
                 if(window.scrollY < document.body.scrollHeight - window.innerHeight){
-                    window.scrollTo(0, Math.floor(window.scrollY + Math.max(1, (Math.floor((document.body.scrollHeight - window.innerHeight - window.scrollY)/50)))));
+                    window.scrollTo(0, Math.floor(window.scrollY + Math.max(1, (Math.floor((document.body.scrollHeight - window.innerHeight - window.scrollY)/20)))));
                 }else{
                     clearInterval(tmp);
                 }
             }else{
                 if(window.scrollY < mesSections[ii] + window.innerHeight + parallax[1].offsetTop){
-                    window.scrollTo(0, Math.floor(window.scrollY + Math.max(1, (Math.floor((mesSections[ii] + window.innerHeight + parallax[1].offsetTop - window.scrollY)/50)))));
-                    console.log('down');
+                    window.scrollTo(0, Math.floor(window.scrollY + Math.max(1, (Math.floor((mesSections[ii] + window.innerHeight + parallax[1].offsetTop - window.scrollY)/20)))));
                 }else if(window.scrollY > mesSections[ii] + window.innerHeight + parallax[1].offsetTop){
-                    window.scrollTo(0, Math.floor(window.scrollY - Math.max(1, (Math.floor((mesSections[ii] + window.innerHeight + parallax[1].offsetTop + window.scrollY)/50)))));
-                    console.log('up');
+                    window.scrollTo(0, Math.floor(window.scrollY - Math.max(1, (Math.floor((window.scrollY - (mesSections[ii] + window.innerHeight + parallax[1].offsetTop))/20)))));
                 }else{
                     clearInterval(tmp);
                 }
             }
             
-        }, 1000/300)
+        }, 1000/60)
     })
 }
 
@@ -200,10 +196,61 @@ let accueil = document.getElementsByClassName('contenu-principal')[0];
 
 if (window.innerHeight > window.innerWidth){
     accueil.style.flexDirection = 'column';
-    accueil.lastElementChild.style.maxHeight = '40%';
+    accueil.lastElementChild.style.maxHeight = '50%';
     accueil.lastElementChild.style.maxWidth = '70%';
 }else{
     accueil.style.flexDirection = 'row';
     accueil.lastElementChild.style.maxHeight = '70%';
-    accueil.lastElementChild.style.maxWidth = '40%';
+    accueil.lastElementChild.style.maxWidth = '50%';
+}
+
+/* ajax formulaire*/
+
+function envoyerMessage(e){
+    let nom = e.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.value;
+    if(nom==""){
+        $('#erreure').html('Le nom est obligatoire');
+        return;
+    }else if(nom.length > 30 || nom.length < 2){
+        $('#erreure').html('Le nom doit être composé de 2 à 30 lettres.');
+        return;
+    }else if(/[^a-zA-Z '-]/.test(nom)){
+        $('#erreure').html('Le nom peut être composé de lettres, de tirets, d\'apostrophes et d\'espaces uniquement.');
+        return;
+    }
+
+    let regexMail = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        
+    let mail = e.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value;
+    if(mail==''){        
+        $('#erreure').html('Le mail est obligatoire');
+        return;
+    }else if(!regexMail.test(mail)){
+        $('#erreure').html('Veuillez entrer un mail valide.');
+        return;
+    }
+
+    let message = e.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value;
+    if(message==''){
+        $('#erreure').html('Le message est obligatoire');
+        return;
+    }else if(message.length < 5){
+        $('#erreure').html('Le message n\'est pas assez long.');
+        return;
+    }
+
+    $.ajax({
+        type: 'post',
+        url: 'php/envoyerMessage.php',
+        data: {
+          nom:nom,
+          mail:mail,
+          message:message
+        },
+        success: function (response) {
+          $('#erreure').html(response);
+        }
+      });
+    
+      return false;
 }
