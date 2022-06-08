@@ -280,3 +280,11 @@ function envoyerMessage(){
     
       return false;
 }
+
+/* delay animation accueil presentation */
+
+let lettres = document.getElementsByClassName('animationAEC');
+
+for(let ij=0; ij<lettres.length; ij++){
+    lettres[ij].style.animationDelay = ij/8 + 's';
+}
