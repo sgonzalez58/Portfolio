@@ -871,6 +871,15 @@ body{
     filter: brightness(0.8);
 }
 
+.contactDroite a{
+    color : black;
+    text-decoration: none;
+}
+
+.on-off-dark-mode:checked ~ main .contactDroite a{
+    color: var(--couleur-dark);
+}
+
 @media screen and (max-width:1023px){
     .contact textarea, .contact input, .contact button{
         font-size: 0.5rem;

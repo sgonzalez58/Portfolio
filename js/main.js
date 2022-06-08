@@ -219,7 +219,6 @@ if (window.innerHeight > window.innerWidth && window.innerWidth > 599){
     contact.style.padding = '2%';
     contact.style.justifyContent = 'center';
     contact.style.flexDirection = 'column';
-    console.log(contact.children)
     contact.children[0].style.display = 'flex';
     document.getElementsByClassName('contactGauche')[0].firstElementChild.remove();
     document.getElementsByClassName('contactGauche')[0].firstElementChild.remove();
