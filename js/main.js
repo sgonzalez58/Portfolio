@@ -66,23 +66,29 @@ let rangementMenuCheck = document.getElementById('mon-menu-burger');
 let rangementMenu = document.getElementsByClassName('rangement-menu');
 let zoneHaute = document.getElementsByClassName('zoneHaute');
 
-window.addEventListener('scroll', ()=>{
+if(window.innerWidth > 1023){
+    window.addEventListener('scroll', ()=>{
+        rangementMenuCheck.checked = true;
+        rangementMenu[0].style.opacity = '0.1';
+        zoneHaute[0].style.height = '3rem';
+        zoneHaute[0].style.maxHeight = '3rem';
+    })
+
+    zoneHaute[0].addEventListener('mouseover', ()=>{
+        rangementMenu[0].style.opacity = '1';
+        zoneHaute[0].style.maxHeight = '0';
+    })
+
+
+    rangementMenu[0].addEventListener('mouseleave', ()=>{
+        rangementMenu[0].style.opacity = '0.1';
+        zoneHaute[0].style.height = '3rem';
+        zoneHaute[0].style.maxHeight = '3rem';
+    })
+}else{
     rangementMenuCheck.checked = true;
-    rangementMenu[0].style.opacity = '0.1';
-    zoneHaute[0].style.height = '2rem';
-    zoneHaute[0].style.maxHeight = '2rem';
-})
+}
 
-zoneHaute[0].addEventListener('mouseover', ()=>{
-    rangementMenu[0].style.opacity = '1';
-    zoneHaute[0].style.maxHeight = '0';
-})
-
-rangementMenu[0].addEventListener('mouseleave', ()=>{
-    rangementMenu[0].style.opacity = '0.1';
-    zoneHaute[0].style.height = '2rem';
-    zoneHaute[0].style.maxHeight = '2rem';
-})
 
 /*parallax*/
 
@@ -112,7 +118,7 @@ window.addEventListener('scroll', ()=>{
     }
 })
 
-/*Opacity section Mes Compétences + Mes Projets */
+/*Opacity section Mes Compétences + Mes Projets et placement */
 
 let deuxiemePartie = document.getElementsByClassName('deuxiemePartie')[0];
 let categoriesCompetences = document.getElementsByClassName('categorieCompetences');
@@ -187,6 +193,7 @@ for(let ii = 0; ii<mesSections.length; ii++){
             }
             
         }, 1000/60)
+        rangementMenuCheck.checked = !rangementMenuCheck.checked;   
     })
 }
 
@@ -204,10 +211,30 @@ if (window.innerHeight > window.innerWidth){
     accueil.lastElementChild.style.maxWidth = '50%';
 }
 
+/* order contact paysage ou portrait */
+
+contact = document.getElementsByClassName('volet')[0];
+
+if (window.innerHeight > window.innerWidth && window.innerWidth > 599){
+    contact.style.padding = '2%';
+    contact.style.justifyContent = 'center';
+    contact.style.flexDirection = 'column';
+    console.log(contact.children)
+    contact.children[0].style.display = 'flex';
+    document.getElementsByClassName('contactGauche')[0].firstElementChild.remove();
+    document.getElementsByClassName('contactGauche')[0].firstElementChild.remove();
+    document.getElementsByClassName('contactGauche')[0].style.width = '60%';
+    document.getElementsByClassName('contactDroite')[0].style.width = '40%';
+    document.getElementsByClassName('contactDroite')[0].style.marginRight = '5%';
+    document.getElementsByClassName('contactDroite')[0].style.backgroundColor = 'transparent';
+}else{
+    
+}
+
 /* ajax formulaire*/
 
-function envoyerMessage(e){
-    let nom = e.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.value;
+function envoyerMessage(){
+    let nom = document.getElementById('nom').value;
     if(nom==""){
         $('#erreure').html('Le nom est obligatoire');
         return;
@@ -221,7 +248,7 @@ function envoyerMessage(e){
 
     let regexMail = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         
-    let mail = e.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value;
+    let mail = document.getElementById('mail').value;
     if(mail==''){        
         $('#erreure').html('Le mail est obligatoire');
         return;
@@ -230,7 +257,7 @@ function envoyerMessage(e){
         return;
     }
 
-    let message = e.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value;
+    let message = document.getElementById('message').value;
     if(message==''){
         $('#erreure').html('Le message est obligatoire');
         return;
@@ -248,7 +275,7 @@ function envoyerMessage(e){
           message:message
         },
         success: function (response) {
-          $('#erreure').html(response);
+          $('.erreure').html(response);
         }
       });
     

@@ -244,7 +244,7 @@
                         <div class="titreCompetences">
                             <div class="trait"></div>
                             <h3>
-                                Front end
+                                Front&nbsp;end
                             </h3>
                             <div class="trait"></div>
                         </div>
@@ -252,7 +252,7 @@
                             <figure class="competence">
                                 <img class="logoCompetence" src="img/JS logo blanc.svg" alt="javascript">
                                 <figcaption>
-                                    <h4>JAVASCRIPT</h4>
+                                    <h4>JS</h4>
                                 </figcaption>
                             </figure>
                             <figure class="competence">
@@ -273,7 +273,7 @@
                         <div class="titreCompetences">
                             <div class="trait"></div>
                             <h3>
-                                Back end
+                                Back&nbsp;end
                             </h3>
                             <div class="trait"></div>
                         </div>
@@ -294,9 +294,7 @@
                     </div>
                 </section>
                 <section class="mesProjets">
-                    <div class="titreProjets">
-                        <h2>Les projets sur lesquels j'ai travaillé</h2>
-                    </div>
+                    <h2 class="titreProjets">Les projets sur lesquels j'ai travaillé</h2>
                     <div class="listeProjets">
                         <div class="projet">
                             <div class="info">
@@ -344,30 +342,43 @@
                     </div>
                 </section>
                 <section class='contact'>
-                    <div class="volet">
-                        <div class="contactGauche">
+                    <div class="volet">                        
+                        <div class="contactHaut">
                             <h6>N'hésitez pas à me contacter</h6>
                             <p> Je suis ouvert à toute proposition 
                                 et si vous avez une quelconque question 
                                 sur moi ou mes projets, envoyez-moi 
                                 un message via ce formulaire.</p>
-                            <p id="erreure"></p>
-                            <input type="text" name="nom" id="nom" minlength="2" maxlength="30" required placeholder="Nom">
-                            <input type="email" name="mail" id="mail" required placeholder="Mail">
-                            <textarea name="message" id="message" required placeholder="Message" rows="4"></textarea>
-                            <button onclick="envoyerMessage(this);">
-                                Envoyer
-                            </button>
-
                         </div>
-                        <div class="contactDroite">
-                            <h6>Suivez-moi</h6>
-                            <div class="logos">
-                                <img class='logo-contact' src="img/github logo 82CAFF.svg" alt="logo github">
-                                <img class='logo-contact' src="img/linkedin logo 82CAFF.svg" alt="logo linkedin">
+                        <div class="contactCentre">
+                            <div class="contactGauche">
+                                <h6>N'hésitez pas à me contacter</h6>
+                                <p> Je suis ouvert à toute proposition 
+                                    et si vous avez une quelconque question 
+                                    sur moi ou mes projets, envoyez-moi 
+                                    un message via ce formulaire.</p>
+                                
+                                <div class="formulaire">
+                                    <p id="erreure"></p>
+                                    <input type="text" name="nom" id="nom" minlength="2" maxlength="30" required placeholder="Nom">
+                                    <input type="email" name="mail" id="mail" required placeholder="Mail">
+                                    <textarea name="message" id="message" required placeholder="Message" rows="1"></textarea>
+                                    <button onclick="envoyerMessage();">
+                                        Envoyer
+                                    </button>
+                                </div>
                             </div>
-                            <img class='img-contact' src="img/ordinateur-portable-ecran-plat.png" alt="ordinateur portable">
-                            <a>Mentions légales</a>
+                            <div class="contactDroite">
+                                <div class="reseauxSociaux">
+                                    <h6>Suivez-moi</h6>
+                                    <div class="logos">
+                                        <img class='logo-contact' src="img/github logo 82CAFF.svg" alt="logo github">
+                                        <img class='logo-contact' src="img/linkedin logo 82CAFF.svg" alt="logo linkedin">
+                                    </div>
+                                </div>
+                                <img class='img-contact' src="img/ordinateur-portable-ecran-plat.png" alt="ordinateur portable">
+                                <a>Mentions légales</a>
+                            </div>
                         </div>
                     </div>
                 </section>
