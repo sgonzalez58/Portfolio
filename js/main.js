@@ -287,4 +287,16 @@ let lettres = document.getElementsByClassName('animationAEC');
 
 for(let ij=0; ij<lettres.length; ij++){
     lettres[ij].style.animationDelay = ij/8 + 's';
+    lettres[ij].addEventListener('mouseenter', ()=>{
+        if(lettres[ij].style.animationName == ''){
+            lettres[ij].style.animationDelay = '0s';
+            lettres[ij].style.animationIterationCount = 'infinite';
+            lettres[ij].style.animationName = 'AECHover';
+            lettres[ij].addEventListener('animationiteration', ()=>{
+                lettres[ij].style.animationPlayState = 'paused';
+            })
+        }else{
+            lettres[ij].style.animationPlayState = 'running';
+        }
+    })
 }
