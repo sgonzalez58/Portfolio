@@ -233,10 +233,12 @@ body{
 
 .menu li{
     list-style: none;
+    transition-duration: 0.5s;
 }
 
 .menu li:hover{
     cursor: pointer;
+    transform: scale(1.5);
 }
 
 .menu a{
@@ -346,6 +348,7 @@ body{
     width: 100vw;
 }
 
+
 .contenu-principal h1{
     position:relative;
     font-size: 1rem;
@@ -441,9 +444,122 @@ body{
     filter:brightness(0.8);
 }
 
+.conteneurTelephone{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+}
+
+.animTelephone{
+    position: absolute;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    transform-origin: 0 0;
+    transform: rotate3d(2, 0, 0.9, 45deg);
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 1;
+    padding: min(10px, 10%);
+}
+
+.menuAnimTelephone{
+    height: 15%;
+    width: 100%;
+    background-color: transparent;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    transition-duration: 0.5s;
+    opacity: 0;
+}
+
+.buttonAnimTelephone{
+    width: 27%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgButtonAnimTelephone{
+    width: 50%;
+    height: 50%;
+}
+
+.ecranAnimTelephone{
+    height: 80%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.innerAnimTelephone{
+    width: 95%;
+    height: 15%;
+    border-radius: 10px;
+    background-color: lightblue;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.rondAnimTelephone{
+    height: 80%;
+    border-radius: 50%;
+    background-color: rgb(224, 169, 212);
+}
+
+.textAnimTelephone{
+    height: 80%;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.lineAnimTelephone{
+    height: 30%;
+    width: 100%;
+    background-color: rgb(194, 194, 194);
+    border-radius: 20px;
+}
+
+@keyframes ATP {
+    from{
+        transform: translateY(700%);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
+@keyframes ATPclick {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(150%);
+    }    
+}
+
+
 .telephone{
-    max-height: 70%;
-    max-width: 40%;
+    position: relative;
+    max-height: 90%;
+    max-width: 90%;
 }
 
 .on-off-dark-mode:checked ~ main .telephone{

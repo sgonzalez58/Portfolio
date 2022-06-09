@@ -203,12 +203,12 @@ let accueil = document.getElementsByClassName('contenu-principal')[0];
 
 if (window.innerHeight > window.innerWidth){
     accueil.style.flexDirection = 'column';
-    accueil.lastElementChild.style.maxHeight = '50%';
-    accueil.lastElementChild.style.maxWidth = '70%';
+    accueil.lastElementChild.style.maxHeight = '40%';
+    accueil.lastElementChild.style.maxWidth = '80%';
 }else{
     accueil.style.flexDirection = 'row';
-    accueil.lastElementChild.style.maxHeight = '70%';
-    accueil.lastElementChild.style.maxWidth = '50%';
+    accueil.lastElementChild.style.maxHeight = '80%';
+    accueil.lastElementChild.style.maxWidth = '40%';
 }
 
 /* order contact paysage ou portrait */
@@ -300,3 +300,43 @@ for(let ij=0; ij<lettres.length; ij++){
         }
     })
 }
+
+/* animation telephone */
+
+let animationTelephone = document.getElementsByClassName('animTelephone')[0];
+let messagesTelephone = document.getElementsByClassName('innerAnimTelephone');
+let menuTelephone = document.getElementsByClassName('menuAnimTelephone')[0];
+let rondTelephone = document.getElementsByClassName('rondAnimTelephone');
+
+lettres[lettres.length - 1].addEventListener('animationend', ()=>{
+    animationTelephone.style.height = animationTelephone.parentElement.lastElementChild.clientHeight/1.55 + 'px';
+    animationTelephone.style.width = animationTelephone.parentElement.lastElementChild.clientWidth/3 + 'px';
+    for(let kk=0; kk<rondTelephone.length; kk++){
+        rondTelephone[kk].style.width = rondTelephone[kk].clientHeight + 'px';
+        if(kk%2 == 1){
+            rondTelephone[kk].parentElement.style.flexDirection = 'row-reverse';
+        }        
+    }
+    setInterval(()=>{
+        animationTelephone.style.top = animationTelephone.parentElement.lastElementChild.offsetTop + 'px';
+        animationTelephone.style.left = animationTelephone.parentElement.lastElementChild.clientWidth/100 * 68 + animationTelephone.parentElement.lastElementChild.offsetLeft +'px';
+    }, 1000/60);
+    menuTelephone.style.opacity = 1;
+    menuTelephone.lastElementChild.addEventListener('click', ()=>{
+        for(let kki=0; kki<rondTelephone.length; kki++){            
+            rondTelephone[kki].parentElement.style.animationDelay = kki/2 + 's';
+            rondTelephone[kki].parentElement.style.animationName = 'ATPclick';
+        }
+    })
+    menuTelephone.firstElementChild.addEventListener('click', ()=>{
+        for(let kki=0; kki<rondTelephone.length; kki++){            
+            rondTelephone[kki].parentElement.style.animationDelay = kki + 1 + 's';
+            rondTelephone[kki].parentElement.style.animationName = 'ATP';
+        }
+    })
+    for(let jj=0; jj<messagesTelephone.length; jj++){
+        messagesTelephone[jj].style.animationDelay = jj + 1 +'s';
+        messagesTelephone[jj].style.animationName = 'ATP';
+    }
+})
+
