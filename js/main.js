@@ -121,60 +121,53 @@ window.addEventListener('scroll', ()=>{
 /*Opacity section Mes Compétences + Mes Projets et placement */
 
 let deuxiemePartie = document.getElementsByClassName('deuxiemePartie')[0];
-let categoriesCompetences = document.getElementsByClassName('categorieCompetences');
+let categories = document.getElementsByClassName('categories');
 let k;
 
 if(window.innerHeight + parallax[1].clientHeight + xStartingPositionParallax[1] - window.scrollY / 2 < window.scrollY){
-    for(k = 0; k <categoriesCompetences.length; k++){
-        categoriesCompetences[k].style.opacity = 1;
-        categoriesCompetences[k].style.transitionDelay = (k+1)/2 +'s';
+    for(k = 0; k <categories.length; k++){
+        categories[k].style.opacity = 1;
+        categories[k].style.transitionDelay = (k+1)/2 +'s';
     }
-    deuxiemePartie.style.transitionDuration = '0s';
-    deuxiemePartie.style.zIndex = 1;
-    deuxiemePartie.style.transitionDuration = '0.5s';
+    deuxiemePartie.style.zIndex = 2;
     deuxiemePartie.style.opacity = 1;
 }else{
-    for(k = 0; k <categoriesCompetences.length; k++){
-        categoriesCompetences[k].style.opacity = 0;
-        categoriesCompetences[k].style.transitionDelay = 0 + 's';
+    for(k = 0; k <categories.length; k++){
+        categories[k].style.opacity = 0;
+        categories[k].style.transitionDelay = 0 + 's';
     }
-    deuxiemePartie.style.transitionDuration = '0s';
-    deuxiemePartie.style.zIndex = 0;
-    deuxiemePartie.style.transitionDuration = '0.5s';
     deuxiemePartie.style.opacity = 0;
 }
 
 window.addEventListener('scroll', apparitionCompetences=>{
     if(window.innerHeight + parallax[1].clientHeight + xStartingPositionParallax[1] - window.scrollY / 2 < window.scrollY){
-        for(k = 0; k <categoriesCompetences.length; k++){
-            categoriesCompetences[k].style.opacity = 1;
-            categoriesCompetences[k].style.transitionDelay = (k+1)/2 +'s';
+        for(k = 0; k <categories.length; k++){
+            categories[k].style.opacity = 1;
+            categories[k].style.transitionDelay = (k+1)/2 +'s';
         }
-        deuxiemePartie.style.transitionDuration = '0s';
-        deuxiemePartie.style.zIndex = 1;
-        deuxiemePartie.style.transitionDuration = '0.5s';
+        deuxiemePartie.lastElementChild.firstElementChild.style.position = 'fixed';
+        deuxiemePartie.style.zIndex = 2;
         deuxiemePartie.style.opacity = 1;
     }else{
-        for(k = 0; k <categoriesCompetences.length; k++){
-            categoriesCompetences[k].style.opacity = 0;
-            categoriesCompetences[k].style.transitionDelay = 0 + 's';
-        }
-        deuxiemePartie.style.transitionDuration = '0s';
+        for(k = 0; k <categories.length; k++){
+            categories[k].style.opacity = 0;
+            categories[k].style.transitionDelay = 0 + 's';
+        }   
+        deuxiemePartie.lastElementChild.firstElementChild.style.position = 'relative'; 
         deuxiemePartie.style.zIndex = 0;
-        deuxiemePartie.style.transitionDuration = '0.5s';
         deuxiemePartie.style.opacity = 0;
     }
 })
 
 function placementCompetencesProjets(){
     if(window.innerHeight + parallax[1].clientHeight + xStartingPositionParallax[1] - window.scrollY / 2 < window.scrollY){
-        deuxiemePartie.style.top = parallax[1].clientHeight + xStartingPositionParallax[1] - window.scrollY / 2 + 'px';
+        deuxiemePartie.style.top = xStartingPositionParallax[1] - window.scrollY / 2 + 'px';
+        deuxiemePartie.style.height = deuxiemePartie.clientHeight + (xStartingPositionParallax[1] - window.scrollY / 2)  + 'px';
         window.removeEventListener('scroll', placementCompetencesProjets)
     }
 }
 
 window.addEventListener('scroll', placementCompetencesProjets);
-
 /* menu smooth scroll vers section */
 lienMenu = document.getElementsByTagName('li');
 mesSections = [0, 0, parallax[1].clientHeight + Math.floor(window.innerHeight * 0.1), parallax[1].clientHeight + deuxiemePartie.firstElementChild.clientHeight - 20, 0];
@@ -351,4 +344,3 @@ lettres[lettres.length - 1].addEventListener('animationend', ()=>{
         messagesTelephone[jj].style.animationName = 'ATP';
     }
 })
-

@@ -40,7 +40,7 @@ body{
     z-index: 20;
     height: 3rem;
     width: 3rem;
-    left: calc(50% - 1rem);
+    left: calc(50% - 1.5rem);
     transform: translateY(-100%);
     border-radius: 50%;
     background-color: white;
@@ -63,7 +63,7 @@ body{
 .zoneHaute{
     position : fixed;
     top:0;
-    left: calc(50% - 1rem);
+    left: calc(50% - 1.5rem);
     transform: translateY(-50%);
     width: 3rem;
     height: 3rem;
@@ -101,7 +101,6 @@ body{
 }
 
 .menu-burger-label{
-    z-index: 10;
     display: flex;
     justify-content: center;
     padding : 5%;
@@ -134,7 +133,6 @@ body{
 }
 
 .dark-mode-label{  
-    z-index: 15;
     transition-duration: 1s;
 }
 
@@ -289,7 +287,7 @@ body{
     overflow: hidden;
     position: relative;
     color : black;
-    z-index: 2;
+    z-index: 1;
 }
 
 .on-off-dark-mode:checked ~ main #accueil{
@@ -620,25 +618,22 @@ body{
 /*section a propos*/
 
 #aPropos{
-    position: absolute;
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
+    z-index: 1;
 }
 
 .fondAPropos{
     padding: 0 5%;
     left: 0;
     width: 100%;
+    position: absolute;
     height: 300vh;
     top : 0;
-    z-index: 1;
     background-color: white;
     overflow: hidden;
-}
-
-.fondAPropos:hover ~ .cartePresentation{
-    opacity: 0.2;
 }
 
 .on-off-dark-mode:checked ~ main .fondAPropos{
@@ -651,6 +646,11 @@ body{
     position : absolute;
     margin-top: 50%;
     user-select: none;
+    width: 90vw;
+}
+
+.fondAPropos:hover ~ .cartePresentation{
+    opacity:0.2;
 }
 
 .brown{
@@ -692,8 +692,9 @@ body{
     z-index: 2;
     border-radius: 50px;
     box-shadow: 0 0 70px 5px rgba(0,0,0,0.25);
-    position : absolute;
+    position : relative;
     transition-duration: 0.5s;
+    transition-property: opacity, background-color;
 }
 
 .on-off-dark-mode:checked ~ main .cartePresentation{
@@ -739,7 +740,6 @@ body{
 
 .deuxiemePartie{
     position: relative;
-    top: 200vh;
     opacity: 1;
     transition-duration: 0.5s;
     z-index: 1;
@@ -753,6 +753,7 @@ body{
     z-index: 1;
     position: relative;
     top:0;
+    border-radius: 0 0 25px 25px;
 }
 
 .on-off-dark-mode:checked ~ main .mesCompetences{
@@ -760,7 +761,7 @@ body{
     color: rgb(185,185,185);
 }
 
-.categorieCompetences{
+.categories{
     display: flex;
     flex-direction: column;
     margin-top: 10%;
@@ -774,7 +775,7 @@ body{
     align-items: center;
 }
 
-.titreCompetences h3{
+.titreCompetences h2{
     padding: min(5%, 20px);
 }
 
@@ -799,7 +800,8 @@ body{
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    width: min(30vh, 30vw ,300px);
+    margin : min(5%, 20px);
+    width: min(30vw ,300px);
 }
 
 .logoCompetence{
@@ -833,26 +835,6 @@ body{
 
 /*Section Projets*/
 
-.mesProjets{
-    background-color: var(--couleur-light);
-    color: black;
-    transition-duration: 0.5s;
-    z-index: 1;
-    position: relative;
-    margin-top: -1px;
-    padding-bottom: 10%;
-    border-radius: 0 0 25px 25px;
-}
-
-.on-off-dark-mode:checked ~ main .mesProjets{
-    background-color: var(--couleur-dark);
-    color: rgb(185,185,185);
-}
-
-.titreProjets{
-    padding : 5% 5% 0;
-    text-align: end;
-}
 
 .listeProjets{
     display: flex;
@@ -907,10 +889,6 @@ body{
 }
 
 @media screen and (max-width:1023px){
-    .titreProjets{
-        text-align: center;
-    }
-
     .projet{
         width: 98%;
     }
@@ -941,7 +919,6 @@ body{
 .volet{
     display: flex;
     align-items: center;
-    position: fixed;
     top:0;
     z-index: -1;
     padding: 2%;
