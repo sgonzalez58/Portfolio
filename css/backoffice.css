@@ -1,0 +1,33 @@
+@import url('font.css');
+
+html{
+    font-size: calc((5vw + 5vh)/2);
+}
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 0.4rem;
+}
+
+@media screen and (max-width:1023px){
+    body{
+        font-size:0.6rem;
+    }
+}
+
+@media screen and (max-width:599px){
+    body {
+        font-size:1rem;
+    }
+}
+
+/*header*/
+
+header{
+    padding : 5%;
+}

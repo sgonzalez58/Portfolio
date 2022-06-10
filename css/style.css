@@ -764,7 +764,7 @@ body{
 .categories{
     display: flex;
     flex-direction: column;
-    margin-top: 10%;
+    padding-top: 10%;
     transition-duration: 0.5s;
 }
 
@@ -775,8 +775,18 @@ body{
     align-items: center;
 }
 
-.titreCompetences h2{
+.titreCompetences > h2, .titreCompetences a{
     padding: min(5%, 20px);
+}
+
+.titreCompetences a{
+    color: black;
+    text-decoration: none;
+    cursor: default;
+}
+
+.on-off-dark-mode:checked ~ main .titreCompetences a{
+    color : rgb(185, 185, 185);
 }
 
 .trait{

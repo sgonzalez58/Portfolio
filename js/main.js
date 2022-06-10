@@ -169,8 +169,11 @@ function placementCompetencesProjets(){
 
 window.addEventListener('scroll', placementCompetencesProjets);
 /* menu smooth scroll vers section */
+
+aPropos = document.getElementById('aPropos');
 lienMenu = document.getElementsByTagName('li');
-mesSections = [0, 0, parallax[1].clientHeight + Math.floor(window.innerHeight * 0.1), parallax[1].clientHeight + deuxiemePartie.firstElementChild.clientHeight - 20, 0];
+console.log(deuxiemePartie.firstElementChild.firstElementChild.clientHeight);
+mesSections = [0, 0, aPropos.clientHeight + Math.floor(window.innerHeight * 0.25), aPropos.clientHeight + Math.floor(window.innerHeight * 0.25) + deuxiemePartie.firstElementChild.firstElementChild.clientHeight, 0];
 
 for(let ii = 0; ii<mesSections.length; ii++){
     lienMenu[ii].addEventListener('click', ()=>{
