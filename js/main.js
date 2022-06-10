@@ -129,12 +129,18 @@ if(window.innerHeight + parallax[1].clientHeight + xStartingPositionParallax[1] 
         categoriesCompetences[k].style.opacity = 1;
         categoriesCompetences[k].style.transitionDelay = (k+1)/2 +'s';
     }
+    deuxiemePartie.style.transitionDuration = '0s';
+    deuxiemePartie.style.zIndex = 1;
+    deuxiemePartie.style.transitionDuration = '0.5s';
     deuxiemePartie.style.opacity = 1;
 }else{
     for(k = 0; k <categoriesCompetences.length; k++){
         categoriesCompetences[k].style.opacity = 0;
         categoriesCompetences[k].style.transitionDelay = 0 + 's';
     }
+    deuxiemePartie.style.transitionDuration = '0s';
+    deuxiemePartie.style.zIndex = 0;
+    deuxiemePartie.style.transitionDuration = '0.5s';
     deuxiemePartie.style.opacity = 0;
 }
 
@@ -144,12 +150,18 @@ window.addEventListener('scroll', apparitionCompetences=>{
             categoriesCompetences[k].style.opacity = 1;
             categoriesCompetences[k].style.transitionDelay = (k+1)/2 +'s';
         }
+        deuxiemePartie.style.transitionDuration = '0s';
+        deuxiemePartie.style.zIndex = 1;
+        deuxiemePartie.style.transitionDuration = '0.5s';
         deuxiemePartie.style.opacity = 1;
     }else{
         for(k = 0; k <categoriesCompetences.length; k++){
             categoriesCompetences[k].style.opacity = 0;
             categoriesCompetences[k].style.transitionDelay = 0 + 's';
         }
+        deuxiemePartie.style.transitionDuration = '0s';
+        deuxiemePartie.style.zIndex = 0;
+        deuxiemePartie.style.transitionDuration = '0.5s';
         deuxiemePartie.style.opacity = 0;
     }
 })

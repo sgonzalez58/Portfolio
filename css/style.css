@@ -463,12 +463,11 @@ body{
     border-radius: 20px;
     overflow: hidden;
     z-index: 1;
-    padding: min(10px, 10%);
 }
 
 .menuAnimTelephone{
-    height: 15%;
-    width: 100%;
+    height: 20%;
+    width: 80%;
     background-color: transparent;
     position: relative;
     display: flex;
@@ -486,19 +485,20 @@ body{
 }
 
 .imgButtonAnimTelephone{
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
 }
 
 .ecranAnimTelephone{
-    height: 80%;
+    height: 77%;
+    margin-top: 5%;
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
     justify-content: space-around;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: white;
     overflow: hidden;
 }
@@ -627,7 +627,6 @@ body{
 }
 
 .fondAPropos{
-    position:absolute;
     padding: 0 5%;
     left: 0;
     width: 100%;
@@ -638,24 +637,63 @@ body{
     overflow: hidden;
 }
 
+.fondAPropos:hover ~ .cartePresentation{
+    opacity: 0.2;
+}
+
 .on-off-dark-mode:checked ~ main .fondAPropos{
-    background-color: rgb(185,185,185);
+    background-color: rgb(80, 80, 80);
+    color: white;
 }
 
 #fondCode{
     font-family: 'Arial';
     position : absolute;
     margin-top: 50%;
+    user-select: none;
+}
+
+.brown{
+    color:brown;
+}
+
+.on-off-dark-mode:checked ~ main .brown{
+    color:rgb(82, 114, 255)
+}
+
+.red{
+    color: red;
+}
+
+.on-off-dark-mode:checked ~ main .red{
+    color:#4db5ff;
+}
+
+.blue{
+    color: blue;
+}
+
+.on-off-dark-mode:checked ~main .blue{
+    color: rgb(255, 171, 149);
+}
+
+.green{
+    color: green;
+}
+
+.on-off-dark-mode:checked ~main .green{
+    color: lightgreen;
 }
 
 .cartePresentation{
-    width: 60%;
+    width: 70%;
     padding : 2%;
     background-color: white;
     z-index: 2;
     border-radius: 50px;
     box-shadow: 0 0 70px 5px rgba(0,0,0,0.25);
     position : absolute;
+    transition-duration: 0.5s;
 }
 
 .on-off-dark-mode:checked ~ main .cartePresentation{
@@ -669,13 +707,12 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--couleur-light);
+    color: var(--couleur-dark);
     text-align: center;
 }
 
 .on-off-dark-mode:checked ~ main .cartePresentation > div{
     border-color: var(--couleur-dark);
-    color: var(--couleur-dark);
 }
 
 .cartePresentation > div > *{
@@ -685,10 +722,6 @@ body{
 .cartePresentation a{
     text-decoration: underline;
     font-size: 0.6rem;
-    color : var(--couleur-light);
-}
-
-.on-off-dark-mode:checked ~ main .cartePresentation a {
     color : var(--couleur-dark);
 }
 

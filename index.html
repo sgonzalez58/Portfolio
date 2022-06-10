@@ -113,111 +113,111 @@
             <section id="aPropos">
                 <div class="fondAPropos">
                     <p id = "fondCode" class="parallax">
-                        &lt;!DOCTYPE html&gt;<br>
-    &lt;html lang=&quot;fr&quot;&gt;<br>
+                        <span class="brown">&lt;!DOCTYPE</span> <span class='red'>html</span><span class='brown'>&gt;<br>
+    &lt;html</span> <span class='red'>lang</span>=<span class='blue'>&quot;fr&quot;</span><span class='brown'>&gt;<br>
     <br>
     &lt;head&gt;<br>
     <br>
-    &lt;meta charset=&quot;UTF-8&quot;&gt;<br>
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;<br>
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br>
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/index.css&quot; /&gt;<br>
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/font.css&quot;/&gt;<br>
-    &lt;!-- &lt;meta http-equiv=&quot;refresh&quot; content=&quot;35; url=index.php&quot;&gt; Permet de redirig&eacute; la page sur une page choisis --&gt;<br>
-    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js&quot;&gt;&lt;/script&gt;<br>
-    &lt;script src=&#39;js/consulterArticle.js&#39; defer&gt;&lt;/script&gt;<br>
-    &lt;script src=&quot;js/carrousel.js&quot; defer&gt;&lt;/script&gt;<br>
+    &lt;meta</span> <span class='red'>charset</span>=<span class='blue'>&quot;UTF-8&quot;</span><span class="brown">&gt;<br>
+    &lt;meta</span> <span class='red'>http-equiv</span>=<span class='blue'>&quot;X-UA-Compatible&quot;</span> <span class='red'>content</span>=<span class='blue'>&quot;IE=edge&quot;</span><span class="brown">&gt;<br>
+    &lt;meta</span> <span class='red'>name</span>=<span class='blue'>&quot;viewport&quot;</span> <span class='red'>content</span>=<span class='blue'>&quot;width=device-width, initial-scale=1.0&quot;</span><span class="brown">&gt;<br>
+    &lt;link</span> <span class='red'>rel</span>=<span class='blue'>&quot;stylesheet&quot;</span> <span class='red'>href</span>=<span class='blue'>&quot;css/index.css&quot;</span> <span class="brown">/&gt;<br>
+    &lt;link</span> <span class='red'>rel</span>=<span class='blue'>&quot;stylesheet&quot;</span> <span class='red'>href</span>=<span class='blue'>&quot;css/font.css&quot;</span><span class="brown">/&gt;<br>
+    </span><span class='green'>&lt;!-- &lt;meta http-equiv=&quot;refresh&quot; content=&quot;35; url=index.php&quot;&gt; Permet de redirig&eacute; la page sur une page choisis --&gt;</span><br>
+    <span class='brown'>&lt;script</span> <span class='red'>src</span>=<span class='blue'>&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js&quot;</span><span class="brown">&gt;&lt;/script&gt;<br>
+    &lt;script </span><span class='red'>src</span>=<span class='blue'>&#39;js/consulterArticle.js&#39;</span> <span class='red'>defer</span><span class="brown">&gt;&lt;/script&gt;<br>
+    &lt;script </span><span class='red'>src</span>=<span class='blue'>&quot;js/carrousel.js&quot;</span> <span class='red'>defer</span><span class="brown">&gt;&lt;/script&gt;<br>
     <br>
     &lt;/head&gt;<br>
     &lt;body&gt;<br>
-    &lt;?php include_once (&#39;header.php&#39;);?&gt;<br>
+    &lt;?php </span><span class='blue'>include_once (</span><span class='brown'>&#39;header.php&#39;</span><span class='blue'>)</span>;<span class="brown">?&gt;<br>
     &lt;main&gt;<br>
-    &lt;div id=&#39;modal&#39; class=&#39;modal&#39;&gt;&lt;/div&gt;<br>
-    &lt;?php<br>
-    $images = [];<br>
-    if($img_dir = @opendir(&#39;img/partage&#39;)){<br>
-    while (false !== ($img_file = readdir($img_dir))){<br>
-    if($img_file !== &#39;.&#39; &amp;&amp; $img_file !== &#39;..&#39;)<br>
+    &lt;div </span><span class='red'>id</span>=<span class='blue'>&#39;modal&#39;</span> <span class='red'>class</span>=<span class='blue'>&#39;modal&#39;</span><span class="brown">&gt;&lt;/div&gt;<br>
+    &lt;?php<br></span>
+    $images = <span class='blue'>[];<br>
+    if(</span>$img_dir = @opendir<span class='green'>(</span><span class="brown">&#39;img/partage&#39;</span><span class='green'>)</span><span class='blue'>){<br>
+    while </span><span class='green'>(</span><span class='blue'>false !</span>== ($img_file = readdir<span class='blue'>(</span>$img_dir<span class='blue'>)</span><span class='brown'>)</span><span class='green'>){</span><br>
+    <span class='blue'>if</span>($img_file !== <span class='brown'>&#39;.&#39; </span>&amp;&amp; $img_file !== <span class='brown'>&#39;..&#39;</span>)<br>
     $images[] = $img_file;<br>
-    }<br>
-    closedir($img_dir);<br>
-    }else{<br>
-    echo &#39;&lt;p style=\&#39;background-color:black;color:white;text-align:center;\&#39;&gt;Le dossier d\&#39;image n\&#39;existe pas !&lt;/p&gt;&#39;;<br>
-    }<br>
+    <span class='green'>}</span><br>
+    closedir<span class='green'>(</span>$img_dir<span class='green'>)</span>;<br>
+    <span class='blue'>}else{</span><br>
+    echo <span class="brown">&#39;&lt;p style=\&#39;background-color:black;color:white;text-align:center;\&#39;&gt;Le dossier d\&#39;image n\&#39;existe pas !&lt;/p&gt;&#39;</span>;<br>
+    <span class='blue'>}</span><br>
     <br>
-    ?&gt;<br>
-    &lt;section class=&quot;section0&quot;&gt;<br>
+    <span class="brown">?&gt;<br>
+    &lt;section </span><span class='red'>class</span>=<span class='blue'>&quot;section0&quot;</span><span class="brown">&gt;<br>
     <br>
-    &lt;div id=&quot;carrousel&quot;&gt;<br>
-    &lt;?php<br>
-    foreach($images as $image){<br>
-    ?&gt;<br>
-    &lt;img class=&quot;img_carrousel&quot; src=&quot;img/partage/&lt;?=$image?&gt;&quot; alt=&quot;photo&quot;&gt;<br>
-    &lt;?php<br>
-    }<br>
-    ?&gt;<br>
+    &lt;div </span><span class='red'>id</span>=<span class='blue'>&quot;carrousel&quot;</span><span class="brown">&gt;<br>
+    &lt;?php<br></span>
+    <span class='blue'>foreach(</span>$images as $image<span class='blue'>){<br></span>
+    <span class="brown">?&gt;<br>
+    &lt;img </span><span class='red'>class</span>=<span class='blue'>&quot;img_carrousel&quot;</span> <span class='red'>src</span>=<span class='blue'>&quot;img/partage/</span><span class="brown">&lt;?=</span>$image<span class="brown">?&gt;</span><span class='blue'>&quot;</span> <span class='red'>alt</span>=<span class='blue'>&quot;photo&quot;</span><span class="brown">&gt;<br>
+    &lt;?php<br></span>
+    <span class='blue'>}<br></span>
+    <span class="brown">?&gt;<br>
     &lt;/div&gt;<br>
     <br>
     &lt;/section&gt;<br>
     <br>
-    &lt;section class=&quot;section1&quot;&gt;<br>
+    &lt;section </span><span class='red'>class</span>=<span class='blue'>&quot;section1&quot;</span><span class="brown">&gt;<br>
     <br>
-    &lt;div class=&quot;conteneur&quot;&gt;<br>
+    &lt;div </span><span class='red'>class</span>=<span class='blue'>&quot;conteneur&quot;</span><span class="brown">&gt;<br>
     <br>
-    &lt;h2 id=&quot;titre_cont&quot;&gt;<br>
+    &lt;h2 </span><span class='red'>id</span>=<span class='blue'>&quot;titre_cont&quot;</span><span class="brown">&gt;<br></span>
     Nos prestations<br>
-    &lt;/h2&gt;<br>
+    <span class="brown">&lt;/h2&gt;<br>
     <br>
-    &lt;?php<br>
-    $sql = $con-&gt;prepare(&quot; SELECT a.* FROM articles as a, categories as c1, categories as c2<br>
-    WHERE a.Id_categorie = c1.Id_categorie &amp;&amp; c1.Parent = c2.Id_categorie &amp;&amp; c2.Nom LIKE &#39;Prestation&#39;<br>
-    ORDER BY Id_article DESC<br>
-    LIMIT 3&quot;);<br>
-    //demande sql pour r&eacute;cup&eacute;rer les articles exclusifs<br>
+    &lt;?php<br></span>
+    $sql = $con-&gt;prepare<span class='blue'>(</span><span class='brown'>&quot;</span> <span class='blue'>SELECT </span><span class="brown">a.</span>* <span class='blue'>FROM </span><span class="brown">articles </span><span class='blue'>as </span><span class="brown">a, categories </span><span class='blue'>as </span><span class="brown">c1, categories</span> <span class='blue'>as </span><span class="brown">c2<br></span>
+    <span class='blue'>WHERE </span><span class="brown">a.Id_categorie </span>= <span class="brown">c1.Id_categorie &amp;&amp; c1.Parent</span> = <span class="brown">c2.Id_categorie &amp;&amp; c2.Nom </span><span class='blue'>LIKE </span><span class="brown">&#39;Prestation&#39;<br></span>
+    <span class='blue'>ORDER BY </span><span class="brown">Id_article </span><span class='blue'>DESC</span><br>
+    <span class='blue'>LIMIT </span><span class='green'>3</span><span class="brown">&quot;</span><span class='blue'>)</span>;<br>
+    <span class='green'>//demande sql pour r&eacute;cup&eacute;rer les articles exclusifs<br></span>
     <br>
-    $sql-&gt;execute();<br>
-    $articles = $sql-&gt;fetchAll(PDO::FETCH_ASSOC);<br>
-    $i = 1;<br>
-    foreach($articles as $article){<br>
-    echo &#39; &lt;article class=\&#39;carte\&#39; id=\&#39;carte&#39;.$i.&#39;\&#39;onclick=\&#39;recupererArticle(this.firstElementChild.lastElementChild);\&#39;&gt;<br>
+    $sql-&gt;execute<span class='blue'>()</span>;<br>
+    $articles = $sql-&gt;fetchAll<span class='blue'>(</span>PDO::FETCH_ASSOC<span class='blue'>)</span>;<br>
+    $i = <span class='green'>1</span>;<br>
+    <span class='blue'>foreach(</span>$articles as $article<span class='blue'>){</span><br>
+    echo <span class="brown">&#39; &lt;article class=\&#39;carte\&#39; id=\&#39;carte&#39;</span>.$i.<span class="brown">&#39;\&#39;onclick=\&#39;recupererArticle(this.firstElementChild.lastElementChild);\&#39;&gt;<br>
     &lt;figure&gt;
-    &lt;img class=\&#39;img1\&#39; title=\&#39;&#39;.$article[&#39;Nom&#39;].&#39;\&#39; src=\&#39;img/&#39;.$article[&quot;Photo&quot;].&#39;\&#39; alt =\&#39;&#39;.$article[&#39;Nom&#39;].&#39;\&#39;/&gt;<br>
-    &lt;figcaption&gt;&#39;.$article[&quot;Nom&quot;].&#39;&lt;/figcaption&gt;<br>
+    &lt;img class=\&#39;img1\&#39; title=\&#39;&#39;</span>.$article<span class='green'>[</span><span class="brown">&#39;Nom&#39;</span><span class='green'>]</span>.<span class="brown">&#39;\&#39; src=\&#39;img/&#39;</span>.$article<span class='green'>[</span><span class="brown">&quot;Photo&quot;</span><span class='green'>]</span>.<span class="brown">&#39;\&#39; alt =\&#39;&#39;</span>.$article<span class='green'>[</span><span class="brown">&#39;Nom&#39;</span><span class='green'>]</span>.<span class="brown">&#39;\&#39;/&gt;<br>
+    &lt;figcaption&gt;&#39;</span>.$article<span class='green'>[</span><span class="brown">&quot;Nom&quot;</span><span class='green'>]</span>.<span class="brown">&#39;&lt;/figcaption&gt;<br>
     &lt;/figure&gt;<br>
-    &lt;img class=\&#39;clou \&#39;src=\&#39;img/clou.png\&#39; id=\&#39;clou&#39;.$i.&#39;\&#39; alt=\&#39;clou\&#39;&gt; <br>
-    &lt;/article&gt;&#39;;<br>
+    &lt;img class=\&#39;clou \&#39;src=\&#39;img/clou.png\&#39; id=\&#39;clou&#39;</span>.$i.<span class="brown">&#39;\&#39; alt=\&#39;clou\&#39;&gt; <br>
+    &lt;/article&gt;&#39;</span>;<br>
     $i++;<br>
-    }<br>
-    ?&gt;<br>
+    <span class='blue'>}<br></span>
+    <span class="brown">?&gt;<br>
     <br>
     <br>
     &lt;/section&gt;<br>
     <br>
-    &lt;section class=&quot;section2&quot;&gt;<br>
+    &lt;section </span><span class='red'>class</span>=<span class='blue'>&quot;section2&quot;</span><span class="brown">&gt;<br>
     <br>
-    &lt;div class=&quot;conteneur2&quot;&gt;<br>
+    &lt;div </span><span class='red'>class</span>=<span class='blue'>&quot;conteneur2&quot;</span><span class="brown">&gt;<br>
     <br>
-    &lt;img src=&quot;img/imgVecto2.png&quot; alt=&quot;image vectoriel en cuir&quot; id=&quot;img4&quot;&gt;<br>
+    &lt;img </span><span class='red'>src</span>=<span class='blue'>&quot;img/imgVecto2.png&quot;</span> <span class='red'>alt</span>=<span class='blue'>&quot;image vectoriel en cuir&quot;</span> <span class='red'>id</span>=<span class='blue'>&quot;img4&quot;</span><span class="brown">&gt;<br>
     <br>
-    &lt;img srcset=&quot;img/produitBarber-s.jpg 512w,<br>
-    img/produitBarber-l.jpg 850w&quot;<br>
-    sizes=&quot;(max-width:767px) 800px,<br>
+    &lt;img </span><span class='red'>srcset</span>=<span class='blue'>&quot;img/produitBarber-s.jpg 512w,<br>
+    img/produitBarber-l.jpg 850w&quot;<br></span>
+    <span class='red'>sizes</span>=<span class='blue'>&quot;(max-width:767px) 800px,<br>
     (max-width:1023px) 500px,<br>
-    800px&quot;<br>
-    src=&quot;img/produitBarber-l.jpg&quot;<br>
-    alt=&quot;produit pour barber&quot;<br>
-    id=&quot;img2&quot;&gt;<br>
+    800px&quot;<br></span>
+    <span class='red'>src</span>=<span class='blue'>&quot;img/produitBarber-l.jpg&quot;<br>
+    </span><span class='red'>alt</span>=<span class='blue'>&quot;produit pour barber&quot;<br>
+    </span><span class='red'>id</span>=<span class='blue'>&quot;img2&quot;</span><span class="brown">&gt;<br>
     <br>
-    &lt;img src=&quot;img/coupe4-l.jpg&quot; alt=&quot;blaireau et accessoires&quot; id=&quot;img1&quot;&gt;<br>
+    &lt;img </span><span class='red'>src</span>=<span class='blue'>&quot;img/coupe4-l.jpg&quot; </span><span class='red'>alt</span>=<span class='blue'>&quot;blaireau et accessoires&quot; </span><span class='red'>id</span>=<span class='blue'>&quot;img1&quot;</span><span class="brown">&gt;<br>
     <br>
-    &lt;img srcset=&quot;img/siegeBarber-s.jpg 512w,<br>
-    img/siegeBarber-l.jpg 900w&quot;<br>
-    sizes=&quot;(max-width:767px) 800px,<br>
+    &lt;img </span><span class='red'>srcset</span>=<span class='blue'>&quot;img/siegeBarber-s.jpg 512w,<br>
+    img/siegeBarber-l.jpg 900w&quot;<br></span>
+    <span class='red'>sizes</span>=<span class='blue'>&quot;(max-width:767px) 800px,<br>
     (max-width:1023px) 500px,<br>
-    800px&quot;<br>
-    src=&quot;img/siegeBarber-l.jpg&quot;<br>
-    alt=&quot;si&egrave;ge de barber&quot;<br>
-    id=&quot;img3&quot;&gt;<br>
+    800px&quot;<br></span>
+    <span class='red'>src</span>=<span class='blue'>&quot;img/siegeBarber-l.jpg&quot;<br>
+    </span><span class='red'>alt</span>=<span class='blue'>&quot;si&egrave;ge de barber&quot;<br>
+    </span><span class='red'>id</span>=<span class='blue'>&quot;img3&quot;</span><span class="brown">&gt;<br>
     <br>
     <br>
     <br>
@@ -225,39 +225,39 @@
     <br>
     &lt;/section&gt;<br>
     <br>
-    &lt;div id=&quot;separation&quot;&gt;&lt;/div&gt;<br>
+    &lt;div </span><span class='red'>id</span>=<span class='blue'>&quot;separation&quot;</span><span class="brown">&gt;&lt;/div&gt;<br>
     <br>
-    &lt;section class=&quot;section3&quot;&gt;<br>
-    &lt;h2&gt;Nos produits de soin du moment&lt;/h2&gt;<br>
-    &lt;div id=&quot;presentation_soin&quot;&gt;<br>
-    &lt;?php<br>
-    $sql = $con-&gt;prepare(&quot; SELECT * FROM articles<br>
-    WHERE exclusivite = &#39;2&#39;<br>
-    ORDER BY Id_article DESC<br>
-    LIMIT 3&quot;);<br>
-    //demande sql pour r&eacute;cup&eacute;rer les articles exclusifs<br>
+    &lt;section </span><span class='red'>class</span>=<span class='blue'>&quot;section3&quot;</span><span class="brown">&gt;<br>
+    &lt;h2&gt;</span>Nos produits de soin du moment<span class="brown">&lt;/h2&gt;<br>
+    &lt;div </span><span class='red'>id</span>=<span class='blue'>&quot;presentation_soin&quot;</span><span class="brown">&gt;<br>
+    &lt;?php<br></span>
+    $sql = $con-&gt;prepare<span class='blue'>(</span><span class='brown'>&quot;</span> <span class='blue'>SELECT</span> * <span class='blue'>FROM</span> <span class="brown">articles<br></span>
+    <span class='blue'>WHERE</span> <span class="brown">exclusivite </span>= <span class="brown">&#39;2&#39;</span><br>
+    <span class='blue'>ORDER BY </span><span class="brown">Id_article </span><span class='blue'>DESC<br>
+    LIMIT </span><span class='green'>3</span><span class="brown">&quot;</span><span class='blue'>)</span>;<br>
+    <span class='green'>//demande sql pour r&eacute;cup&eacute;rer les articles exclusifs<br></span>
     <br>
-    $sql-&gt;execute();<br>
-    $articles = $sql-&gt;fetchAll(PDO::FETCH_ASSOC);<br>
-    $i = 1;<br>
-    foreach($articles as $article){<br>
-    echo &#39; &lt;article id=\&#39;article&#39;.$i.&#39;\&#39; class=\&#39;article\&#39; onclick=\&#39;recupererArticle(this.firstElementChild.lastElementChild);\&#39;&gt;<br>
+    $sql-&gt;execute<span class='blue'>()</span>;<br>
+    $articles = $sql-&gt;fetchAll<span class='blue'>(</span>PDO::FETCH_ASSOC<span class='blue'>)</span>;<br>
+    $i = <span class='green'>1</span>;<br>
+    <span class='blue'>foreach(</span>$articles as $article<span class='blue'>){</span><br>
+    echo <span class="brown">&#39; &lt;article id=\&#39;article&#39;</span>.$i.<span class="brown">&#39;\&#39; class=\&#39;article\&#39; onclick=\&#39;recupererArticle(this.firstElementChild.lastElementChild);\&#39;&gt;<br>
     &lt;figure&gt;<br>
-    &lt;img class=\&#39;petit_image\&#39; title=\&#39;&#39;.$article[&#39;Nom&#39;].&#39;\&#39; src=\&#39;img/&#39;.$article[&quot;Photo&quot;].&#39;\&#39; alt =\&#39;&#39;.$article[&#39;Nom&#39;].&#39;\&#39;/&gt;<br>
-    &lt;figcaption&gt;&#39;.$article[&quot;Nom&quot;].&#39;&lt;/figcaption&gt;<br>
+    &lt;img class=\&#39;petit_image\&#39; title=\&#39;&#39;</span>.$article<span class='green'>[</span><span class="brown">&#39;Nom&#39;</span><span class='green'>]</span>.<span class="brown">&#39;\&#39; src=\&#39;img/&#39;</span>.$article<span class='green'>[</span><span class="brown">&quot;Photo&quot;</span><span class='green'>]</span>.<span class="brown">&#39;\&#39; alt =\&#39;&#39;</span>.$article<span class='green'>[</span><span class="brown">&#39;Nom&#39;</span><span class='green'>]</span>.<span class="brown">&#39;\&#39;/&gt;<br>
+    &lt;figcaption&gt;&#39;</span>.$article<span class='green'>[</span><span class="brown">&quot;Nom&quot;</span><span class='green'>]</span>.<span class="brown">&#39;&lt;/figcaption&gt;<br>
     &lt;/figure&gt;<br>
-    &lt;/article&gt;&#39;;<br>
+    &lt;/article&gt;&#39;</span>;<br>
     $i++;<br>
-    }<br>
-    ?&gt;<br>
+    <span class='blue'>}<br></span>
+    <span class="brown">?&gt;<br>
     &lt;/div&gt;<br>
     &lt;/section&gt;<br>
     <br>
     <br>
     &lt;/main&gt;<br>
-    &lt;?php include_once (&#39;footer.php&#39;);?&gt;<br>
+    &lt;?php </span><span class='blue'>include_once (</span><span class="brown">&#39;footer.php&#39;</span><span class='blue'>)</span>;<span class="brown">?&gt;<br>
     &lt;/body&gt;<br>
-    &lt;/html&gt;<br>
+    &lt;/html&gt;<br></span>
                     </p>
                 </div>
                 <div class="cartePresentation parallax">
