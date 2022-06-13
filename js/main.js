@@ -282,7 +282,7 @@ function envoyerMessage(){
           message:message
         },
         success: function (response) {
-          $('.erreure').html(response);
+          $('#erreure').html(response);
         }
       });
     
@@ -325,10 +325,13 @@ lettres[lettres.length - 1].addEventListener('animationend', ()=>{
             rondTelephone[kk].parentElement.style.flexDirection = 'row-reverse';
         }        
     }
+    animationTelephone.style.top = animationTelephone.parentElement.lastElementChild.offsetTop + 'px';
+    animationTelephone.style.left = animationTelephone.parentElement.lastElementChild.clientWidth/100 * 68 + animationTelephone.parentElement.lastElementChild.offsetLeft +'px';
     setInterval(()=>{
         animationTelephone.style.top = animationTelephone.parentElement.lastElementChild.offsetTop + 'px';
         animationTelephone.style.left = animationTelephone.parentElement.lastElementChild.clientWidth/100 * 68 + animationTelephone.parentElement.lastElementChild.offsetLeft +'px';
-    }, 1000/60);
+    }, 1000/60);    
+    animationTelephone.style.opacity = 1;
     menuTelephone.style.opacity = 1;
     menuTelephone.lastElementChild.addEventListener('click', ()=>{
         for(let kki=0; kki<rondTelephone.length; kki++){            

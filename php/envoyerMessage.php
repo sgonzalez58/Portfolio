@@ -8,9 +8,9 @@ try{
         $message = htmlspecialchars(stripslashes(trim($_POST['message'])));
         $sql = $con -> prepare("INSERT INTO message(nom, mail, message)
                                 VALUES(?, ?, ?)");
-        $sql -> bindParam(1, $nom, PDO::PARAM_STR);
-        $sql -> bindParam(2, $mail, PDO::PARAM_STR);
-        $sql -> bindParam(3, $message, PDO::PARAM_STR);
+        $sql -> bindParam(1, $nom);
+        $sql -> bindParam(2, $mail);
+        $sql -> bindParam(3, $message);
         $sql -> execute();
         echo 'Le message a bien été envoyé.';
     }else{

@@ -461,6 +461,7 @@ body{
     border-radius: 20px;
     overflow: hidden;
     z-index: 1;
+    opacity: 0;
 }
 
 .menuAnimTelephone{
@@ -485,6 +486,7 @@ body{
 .imgButtonAnimTelephone{
     width: 60%;
     height: 60%;
+    cursor: pointer;
 }
 
 .ecranAnimTelephone{
