@@ -45,12 +45,19 @@
                     $sql = $conn -> prepare('SELECT * FROM projets');
                     $sql -> execute();
                     $projets = $sql -> fetchAll(PDO::FETCH_ASSOC);
+                    $sql = $conn -> prepare('SELECT * FROM skills');
+                    $sql -> execute();
+                    $skillList = $sql -> fetchAll(PDO::FETCH_ASSOC);
+                    $skillnames = [];
+                    foreach($skillList as $skillname){
+                        array_push($skillnames, $skillname['nom']);
+                    }
                     foreach($projets as $projet){
                         ?>
                         <div class='projet'>
                             <div class='nom'>
                                 <h2><?=$projet['name']?></h2>
-                                <button id='modifierTitre' class='modifier'>[modifier]</button>
+                                <button class='modifier modifierTitre'>[modifier]</button>
                             </div>
                             <h3>Photos</h3>
                             <div class='photos'>
@@ -67,7 +74,7 @@
                                     <?php
                                 }
                                 ?>
-                                <div id = 'ajoutImage' class='conteneurPhoto ajout'>
+                                <div class='conteneurPhoto ajout ajoutImage'>
                                     <label for='newPhoto'>
                                         <img src='../img/Logo ajouter image.svg' alt='logo ajouter image' class='photo'>
                                     </label>
@@ -80,29 +87,48 @@
                                 $skills = $projet['skills'];
                                 $listeSkills = explode(',', $skills);
                                 foreach($listeSkills as $skill){
+                                    $key = array_search($skill, $skillnames);
                                     ?>
                                     <div class='conteneurLogo'>
-                                        <img src='../img/<?= $skill?> logo blanc.svg' alt='<?= $skill ?>' title='<?= $skill ?>' class='logo'>
+                                        <img src='../img/<?= $skillList[$key]['image']?>' alt='<?= $skill ?>' title='<?= $skill ?>' class='logo'>
                                         <button class='suppression'>X</button>
                                     </div>
                                     <?php
                                 }
                                 ?>
-                                <div class='conteneurLogo ajout'>
+                                <div class='conteneurLogo ajout skillAjout'>
                                     <label for='newLogo'>
                                         <img src='../img/Logo ajouter image.svg' alt='logo ajouter image' class='logo'>
                                     </label>
-                                    <input type='file' name='newLogo' id='newLogo'>
                                 </div>
                             </div>
                             <h3>Réalisation</h3>
                             <div class='equipe'>
                                 <?php
                                 $team = $projet['team'];
-                                $listeTeam = explode('#', $team);
+                                $listeTeam = explode(' avec', $team);
                                 ?>
-                                <p><?=$listeTeam[0]?><a href='<?=explode('@', $listeTeam[1])[1]?>'><?=explode('@', $listeTeam[1])[0]?></a></p>
-                                <button class='modifier'>[modifier]</button>
+                                <p><?=$listeTeam[0]?>
+                                <?php
+                                    for($i=1; $i<count($listeTeam);$i++){
+                                        $liste = explode('#', $listeTeam[$i]);
+                                ?> 
+                                        avec<?=$liste[0]?>
+                                <?php
+                                        $lien = explode('@', $liste[1]);
+                                        if(count($lien) > 1){
+                                ?>
+                                            <a href='<?=$lien[1]?>'><?=$lien[0]?></a>
+                                <?php
+                                        }else{
+                                ?>
+                                            <?=$lien[0]?>
+                                <?php
+                                        }
+                                    }
+                                ?>
+                                </p>
+                                <button class='modifier modifierEquipe'>[modifier]</button>
                             </div>
                         </div>
                         <?php  

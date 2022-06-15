@@ -66,6 +66,121 @@ main{
     cursor: pointer;
 }
 
+#modal{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#prompt{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 25px;
+    text-align: center;
+    position: relative;
+}
+
+#prompt p{
+    margin : max(5%, 30px);
+}
+
+#choix{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#skills{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+}
+
+#skillExistant{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skill{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin : max(2%,20px);
+}
+
+.skillbutton{
+    background-color: lightblue;
+    width: 50%;
+    font-size: 0.4rem;
+    padding : max(2%, 10px) 5%;
+    margin : 10%;
+    transition-duration: 0.5s;
+    align-self: center;
+}
+
+.skillbutton:hover{
+    transform : scale(1.2);
+}
+
+#creationSkill{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#creationSkill div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#creationSkill input[type='text']{
+    font-size: 0.4rem;
+    width: 60%;
+    padding : 0 5%;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-column input[type='text']{
+    font-size: 0.4rem;
+    width: 50%;
+    padding: 0 5%;
+    margin : 0 5%;
+}
+
+.flex-column .skillbutton{
+    margin : 5% auto;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+#prompt label{
+    padding : 0 5%;
+}
+
 .ajouterProjet:hover{
     transform: scale(1.2);
 }
@@ -154,7 +269,7 @@ main{
 }
 
 
-input[type='file']{
+.ajoutImage input[type='file']{
     display: none;
 }
 
