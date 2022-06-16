@@ -755,7 +755,6 @@ for(let clefProjet = 0; clefProjet<projetSuppression.length;clefProjet++){
           success: function (response) {
             if (response == 'Connection réussie'){
               connectionReussie = true;
-              console.log(connectionReussie);
               if (connectionReussie){
                 if(window.confirm('Etes-vous sûr de vouloir supprimer le projet '.concat(projet, '?'))){
                   $.ajax({
