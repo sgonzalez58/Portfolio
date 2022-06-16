@@ -8,7 +8,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/backoffice.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="../js/backoffice.js" defer></script>
+        <?php
+        if(isset($_SESSION['name'])){
+            ?>
+            <script src="../js/backoffice.js" defer></script>
+            <?php
+        }else{
+            ?>
+            <script src="../js/connection.js" defer></script>
+            <?php
+        }
+        ?>
     </head>
     <body>
         <header>
@@ -23,10 +33,11 @@
             if(isset($_SESSION['name'])){
 
                 ?>
-
-                <button id = 'connection' formaction='deconnection.php'>
-                    Se déconnecter
-                </button>
+                <form method='post'>
+                    <button type='submit' formaction='connection.php'>
+                        Se déconnecter
+                    </button>
+                </form>
 
                 <?php
             } 
@@ -37,9 +48,6 @@
             <?php
             if(isset($_SESSION['name'])){
                 try{
-                    ?>
-                    <button class='ajouterProjet'><h1>Ajouter un projet</h1></button>
-                    <?php
                     $conn = new PDO('mysql:host=localhost;dbname=portfolio;charset=utf8', 'root', 'root');
                     $conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $sql = $conn -> prepare('SELECT * FROM projets');
@@ -52,48 +60,68 @@
                     foreach($skillList as $skillname){
                         array_push($skillnames, $skillname['nom']);
                     }
+                    $j = 0;
                     foreach($projets as $projet){
                         ?>
                         <div class='projet'>
                             <div class='nom'>
                                 <h2><?=$projet['name']?></h2>
                                 <button class='modifier modifierTitre'>[modifier]</button>
+                                <button class='supprimerProjet'>X</button>
+                                <div class='archiverProjet'>
+                                <?php 
+                                if($projet['archiver'] == 'oui'){
+                                    ?>
+                                    <input type='checkbox' id='archiver<?=$j?>' class='archivage' checked>
+                                <?php
+                                }else{
+                                    ?>
+                                    <input type='checkbox' id='archiver<?=$j?>' class='archivage'>
+                                <?php
+                                }
+                                ?>
+                                    <label for='archiver<?=$j?>'></label>
+                                </div>
                             </div>
                             <h3>Photos</h3>
                             <div class='photos'>
                                 <?php
-                                $photos = $projet['photos'];
-                                $listePhotos = explode(',', $photos);
-                                foreach($listePhotos as $photo){
-                                    $image = explode(' ', $photo);
-                                    ?>
-                                    <div class='conteneurPhoto'>
-                                        <img src='../img/<?= $image[0] ?>' alt='<?= $image[1] ?>' title='<?= $image[1] ?>' class='photo'>
-                                        <button class='suppression'>X</button>
-                                    </div>
-                                    <?php
+                                if($projet['photos'] != NULL){
+                                    $photos = $projet['photos'];
+                                    $listePhotos = explode(',', $photos);
+                                    foreach($listePhotos as $photo){
+                                        $image = explode(' ', $photo);
+                                        ?>
+                                        <div class='conteneurPhoto'>
+                                            <img src='../img/<?= $image[0] ?>' alt='<?= $image[1] ?>' title='<?= $image[1] ?>' class='photo'>
+                                            <button class='suppression'>X</button>
+                                        </div>
+                                        <?php
+                                    }
                                 }
                                 ?>
                                 <div class='conteneurPhoto ajout ajoutImage'>
-                                    <label for='newPhoto'>
+                                    <label for='newPhoto<?=$j?>'>
                                         <img src='../img/Logo ajouter image.svg' alt='logo ajouter image' class='photo'>
                                     </label>
-                                    <input type='file' name='newPhoto' id='newPhoto'>
+                                    <input type='file' name='newPhoto' id='newPhoto<?=$j?>'>
                                 </div>
                             </div>
                             <h3>Compétences</h3>
                             <div class='competences'>
                                 <?php
-                                $skills = $projet['skills'];
-                                $listeSkills = explode(',', $skills);
-                                foreach($listeSkills as $skill){
-                                    $key = array_search($skill, $skillnames);
-                                    ?>
-                                    <div class='conteneurLogo'>
-                                        <img src='../img/<?= $skillList[$key]['image']?>' alt='<?= $skill ?>' title='<?= $skill ?>' class='logo'>
-                                        <button class='suppression'>X</button>
-                                    </div>
-                                    <?php
+                                if($projet['skills'] != NULL){
+                                    $skills = $projet['skills'];
+                                    $listeSkills = explode(',', $skills);
+                                    foreach($listeSkills as $skill){
+                                        $key = array_search($skill, $skillnames);
+                                        ?>
+                                        <div class='conteneurLogo'>
+                                            <img src='../img/<?= $skillList[$key]['image']?>' alt='<?= $skill ?>' title='<?= $skill ?>' class='logo'>
+                                            <button class='suppression'>X</button>
+                                        </div>
+                                        <?php
+                                    }
                                 }
                                 ?>
                                 <div class='conteneurLogo ajout skillAjout'>
@@ -130,9 +158,16 @@
                                 </p>
                                 <button class='modifier modifierEquipe'>[modifier]</button>
                             </div>
+                            <div class='cover'>
+                                <p>archivé<p>
+                            </div>
                         </div>
                         <?php  
+                        $j++;
                     }
+                    ?>
+                    <button id='ajouterProjet'><h1>Ajouter un projet</h1></button>
+                    <?php
                 }
                 catch(PDOException $e){
                     echo "Erreur : ".$e->getMessage();

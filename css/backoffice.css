@@ -48,8 +48,7 @@ header button, header a p{
 
 main{
     display: flex;
-    flex-direction: column;
-    height: 95vh;
+    flex-direction: column-reverse;
     padding: 5%;
     width: fit-content;
     margin: auto;
@@ -57,7 +56,7 @@ main{
 
 /* -- BACK OFFICE -- */
 
-.ajouterProjet{
+#ajouterProjet{
     background-color: lightblue;
     padding : max(2%, 10px) 0;
     width: 80%;
@@ -66,18 +65,35 @@ main{
     cursor: pointer;
 }
 
+.supprimerProjet{
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    border: none;
+    position: absolute;
+    top: -0.4rem;
+    left: calc(100% - 0.4rem);
+    z-index: 1;
+    transition-duration: 0.5s;
+    font-size: 0.6rem;
+}
+
+.supprimerProjet:hover{
+    transform: scale(1.5);
+}
+
 #modal{
     position: fixed;
     height: 100vh;
+    overflow-y: scroll;
     width: 100vw;
     top: 0;
     left: 0;
     z-index: 10;
     background-color: rgba(0,0,0,0.4);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 10%;
 }
 
 #prompt{
@@ -87,6 +103,12 @@ main{
     border-radius: 25px;
     text-align: center;
     position: relative;
+    width: 75vw;
+    margin: 0 auto;
+}
+
+.long{
+    width: 90%;
 }
 
 #prompt p{
@@ -95,7 +117,7 @@ main{
 
 #choix{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -111,6 +133,8 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: min-content;
+    min-width: 8rem;
 }
 
 .skill{
@@ -125,7 +149,7 @@ main{
     width: 50%;
     font-size: 0.4rem;
     padding : max(2%, 10px) 5%;
-    margin : 10%;
+    margin : 5%;
     transition-duration: 0.5s;
     align-self: center;
 }
@@ -138,13 +162,15 @@ main{
     display: flex;
     flex-direction: column;
     height: 100%;
+    margin: 0 5%;
     align-items: center;
     justify-content: space-between;
 }
 
 #creationSkill div{
     display: flex;
-    width: 100%;
+    max-width: 75vw;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: flex-end;
 }
@@ -177,11 +203,15 @@ main{
     text-align: center;
 }
 
+.center{
+    justify-content: center;
+}
+
 #prompt label{
     padding : 0 5%;
 }
 
-.ajouterProjet:hover{
+#ajouterProjet:hover{
     transform: scale(1.2);
 }
 
@@ -193,6 +223,56 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+}
+
+.archivage{
+    display: none;
+}
+
+.archiverProjet{
+    position: absolute;
+    top: 0.5rem;
+    left: -0.1rem;
+    width: 0.2rem;
+    height: 3rem;
+    background-color: white;
+    border-radius: 45px;
+    box-sizing: content-box;
+}
+
+.archiverProjet label{
+    position: absolute;
+    top:0;
+    height: 2rem;
+    width: 0.2rem;
+    background-color: grey;
+    border: 1px solid black;
+    border-radius: 45px;
+    transition-duration: 0.5s;
+    z-index: 2;
+}
+
+.archiverProjet input:checked ~ label{
+    top:1rem;
+}
+
+.cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.4);
+    z-index: 1;
+    opacity: 0;
+    transition-duration: 0.5s;
+}
+
+.cover p{
+    position: absolute;
+    font-size: 5rem;
+    transform: rotate(45deg);
 }
 
 .nom{

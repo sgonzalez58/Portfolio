@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['name'])){
+if(isset($_SESSION['name']) && !isset($_POST['mail'])){
     session_unset();
-    echo 'Déconnection';
+    header('Location:backoffice.php');
 }else{
     try{
         if(isset($_POST['mail'])){
@@ -22,7 +22,7 @@ if(isset($_SESSION['name'])){
                     $sql -> execute();
                     $mails = $sql -> fetchAll(PDO::FETCH_ASSOC);
                     if(count($mails) == 1){
-                        $_SESSION['name'] = $mails[0]['name'];
+                        $_SESSION['name'] = $mails[0]['Id_user'];
                         echo 'Connection réussie';
                     }else{
                         echo 'Le mot de passe est incorrecte';
