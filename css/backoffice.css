@@ -102,6 +102,7 @@ main{
     flex-direction: column;
     background-color: white;
     border-radius: 25px;
+    padding : 5%;
     text-align: center;
     position: relative;
     width: 75vw;
@@ -163,6 +164,7 @@ main{
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
     margin: 0 5%;
     align-items: center;
     justify-content: space-between;
@@ -170,8 +172,8 @@ main{
 
 #creationSkill div{
     display: flex;
-    max-width: 75vw;
-    flex-wrap: wrap;
+    max-width: 100%;
+    margin : 5% 0;
     justify-content: center;
     align-items: flex-end;
 }
@@ -189,7 +191,7 @@ main{
 
 .flex-column input[type='text']{
     font-size: 0.4rem;
-    width: 50%;
+    width: 100%;
     padding: 0 5%;
     margin : 0 5%;
 }
@@ -482,6 +484,30 @@ main{
     .archiverProjet input:checked ~ label{
         top:2rem;
     }
+
+    #choix{
+        flex-wrap: wrap;
+    }
+
+    .flex{
+        flex-wrap: wrap;
+    }
+
+    .skillbutton{
+        font-size: 0.6rem;
+    }
+
+    #creationSkill input[type='text'] {
+        font-size: 0.6rem;
+    }
+
+    #creationSkill input[type='file'] {
+        font-size: 0.6rem;
+    }
+
+    .flex-column input[type='text'] {
+        font-size: 0.6rem;
+    }
 }
 
 @media screen and (max-width:599px){
@@ -516,5 +542,17 @@ main{
 
     .conteneurLogo{
         width:40%;
+    }
+
+    .skillbutton{
+        font-size: 1rem;
+    }
+
+    #creationSkill input[type='text'] {
+        font-size: 1rem;
+    }
+
+    .flex-column input[type='text'] {
+        font-size: 1rem;
     }
 }
