@@ -796,12 +796,6 @@ let archivage = document.getElementsByClassName('archivage');
 for(let clefArchivage = 0; clefArchivage < archivage.length; clefArchivage++){
   let nomProjet = archivage[clefArchivage].parentElement.parentElement.firstElementChild.innerHTML;
   if(archivage[clefArchivage].checked){
-    archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.top = archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.clientHeight / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientHeight + archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 4 + 'px';
-    archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.left = archivage[clefArchivage].parentElement.parentElement.parentElement.clientWidth / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 2 + 'px';
-    window.addEventListener('resize',()=>{
-      archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.top = archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.clientHeight / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientHeight + archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 4 + 'px';
-      archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.left = archivage[clefArchivage].parentElement.parentElement.parentElement.clientWidth / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 2 + 'px';
-    })
     $.ajax({
       type:'post',
       url:'archiver.php',
@@ -813,7 +807,13 @@ for(let clefArchivage = 0; clefArchivage < archivage.length; clefArchivage++){
         if(response != nomProjet.concat(' archivé.')){
           alert(response);
         }else{
-          archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.style.opacity = '1';
+          archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.style.display = 'block';
+          archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.top = archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.clientHeight / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientHeight + archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 4 + 'px';
+          archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.left = archivage[clefArchivage].parentElement.parentElement.parentElement.clientWidth / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 2 + 'px';
+          window.addEventListener('resize',()=>{
+            archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.top = archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.clientHeight / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientHeight + archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 4 + 'px';
+            archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.left = archivage[clefArchivage].parentElement.parentElement.parentElement.clientWidth / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 2 + 'px';
+          })
         }
       }
     })
@@ -829,7 +829,7 @@ for(let clefArchivage = 0; clefArchivage < archivage.length; clefArchivage++){
         if(response != nomProjet.concat(' désarchivé.')){
           alert(response);
         }else{
-          archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.style.opacity = '0';
+          archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.style.display = 'none';
         }
       }
     })
@@ -837,12 +837,6 @@ for(let clefArchivage = 0; clefArchivage < archivage.length; clefArchivage++){
   archivage[clefArchivage].addEventListener('change', ()=>{
     let nomProjet = archivage[clefArchivage].parentElement.parentElement.firstElementChild.innerHTML;
     if(archivage[clefArchivage].checked){
-      archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.top = archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.clientHeight / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientHeight + archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 4 + 'px';
-      archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.left = archivage[clefArchivage].parentElement.parentElement.parentElement.clientWidth / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 2 + 'px';
-      window.addEventListener('resize',()=>{
-        archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.top = archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.clientHeight / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientHeight + archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 4 + 'px';
-        archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.left = archivage[clefArchivage].parentElement.parentElement.parentElement.clientWidth / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 2 + 'px';
-      })
       $.ajax({
         type:'post',
         url:'archiver.php',
@@ -854,7 +848,13 @@ for(let clefArchivage = 0; clefArchivage < archivage.length; clefArchivage++){
           if(response != nomProjet.concat(' archivé.')){
             alert(response);
           }else{
-            archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.style.opacity = '1';
+            archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.style.display = 'block';
+            archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.top = archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.clientHeight / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientHeight + archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 4 + 'px';
+            archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.left = archivage[clefArchivage].parentElement.parentElement.parentElement.clientWidth / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 2 + 'px';
+            window.addEventListener('resize',()=>{
+              archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.top = archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.clientHeight / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientHeight + archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 4 + 'px';
+              archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.style.left = archivage[clefArchivage].parentElement.parentElement.parentElement.clientWidth / 2 - archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.firstElementChild.clientWidth / 2 + 'px';
+            })
           }
         }
       })
@@ -870,10 +870,77 @@ for(let clefArchivage = 0; clefArchivage < archivage.length; clefArchivage++){
           if(response != nomProjet.concat(' désarchivé.')){
             alert(response);
           }else{
-            archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.style.opacity = '0';
+            archivage[clefArchivage].parentElement.parentElement.parentElement.lastElementChild.style.display = 'none';
           }
         }
       })
     }
   })
 }
+let listeConteneurPhoto = document.getElementsByClassName('conteneurPhoto');
+let listeConteneurLogo = document.getElementsByClassName('conteneurLogo');
+if(window.innerWidth > window.innerHeight){
+  for(let keyConteneur = 0; keyConteneur < listeConteneurPhoto.length; keyConteneur++){
+    if(listeConteneurPhoto[keyConteneur].clientWidth < listeConteneurPhoto[keyConteneur].parentElement.clientWidth / 2){
+      listeConteneurPhoto[keyConteneur].style.width = "28%";
+    }else{
+      listeConteneurPhoto[keyConteneur].style.width = "45%";
+    }
+  }
+  for(let keyConteneur2 = 0; keyConteneur2 < listeConteneurLogo.length; keyConteneur2++){
+    if(listeConteneurLogo[keyConteneur2].clientWidth < listeConteneurLogo[keyConteneur2].parentElement.clientWidth / 3){
+      listeConteneurLogo[keyConteneur2].style.width = "12%";
+    }else if(listeConteneurLogo[keyConteneur2].clientWidth < listeConteneurLogo[keyConteneur2].parentElement.clientWidth / 2){
+      listeConteneurLogo[keyConteneur2].style.width = "18%";
+    }
+  }
+}else{
+  for(let keyConteneur = 0; keyConteneur < listeConteneurPhoto.length; keyConteneur++){
+    if(listeConteneurPhoto[keyConteneur].clientWidth < listeConteneurPhoto[keyConteneur].parentElement.clientWidth / 3){
+      listeConteneurPhoto[keyConteneur].style.width = "45%";
+    }else{
+      listeConteneurPhoto[keyConteneur].style.width = "100%";
+    }
+  }
+  for(let keyConteneur2 = 0; keyConteneur2 < listeConteneurLogo.length; keyConteneur2++){
+    if(listeConteneurLogo[keyConteneur2].clientWidth < listeConteneurLogo[keyConteneur2].parentElement.clientWidth / 4){
+      listeConteneurLogo[keyConteneur2].style.width = "25%";
+    }else if(listeConteneurLogo[keyConteneur2].clientWidth < listeConteneurLogo[keyConteneur2].parentElement.clientWidth / 3){
+      listeConteneurLogo[keyConteneur2].style.width = "40%";
+    }
+  }
+}
+
+window.addEventListener('resize', ()=>{
+  if(window.innerWidth > window.innerHeight){
+    for(let keyConteneur = 0; keyConteneur < listeConteneurPhoto.length; keyConteneur++){
+      if(listeConteneurPhoto[keyConteneur].clientWidth < listeConteneurPhoto[keyConteneur].parentElement.clientWidth / 2){
+        listeConteneurPhoto[keyConteneur].style.width = "28%";
+      }else{
+        listeConteneurPhoto[keyConteneur].style.width = "45%";
+      }
+    }
+    for(let keyConteneur2 = 0; keyConteneur2 < listeConteneurLogo.length; keyConteneur2++){
+      if(listeConteneurLogo[keyConteneur2].clientWidth < listeConteneurLogo[keyConteneur2].parentElement.clientWidth / 3){
+        listeConteneurLogo[keyConteneur2].style.width = "12%";
+      }else if(listeConteneurLogo[keyConteneur2].clientWidth < listeConteneurLogo[keyConteneur2].parentElement.clientWidth / 2){
+        listeConteneurLogo[keyConteneur2].style.width = "18%";
+      }
+    }
+  }else{
+    for(let keyConteneur = 0; keyConteneur < listeConteneurPhoto.length; keyConteneur++){
+      if(listeConteneurPhoto[keyConteneur].clientWidth < listeConteneurPhoto[keyConteneur].parentElement.clientWidth / 3){
+        listeConteneurPhoto[keyConteneur].style.width = "45%";
+      }else{
+        listeConteneurPhoto[keyConteneur].style.width = "100%";
+      }
+    }
+    for(let keyConteneur2 = 0; keyConteneur2 < listeConteneurLogo.length; keyConteneur2++){
+      if(listeConteneurLogo[keyConteneur2].clientWidth < listeConteneurLogo[keyConteneur2].parentElement.clientWidth / 5){
+        listeConteneurLogo[keyConteneur2].style.width = "25%";
+      }else if(listeConteneurLogo[keyConteneur2].clientWidth < listeConteneurLogo[keyConteneur2].parentElement.clientWidth / 4){
+        listeConteneurLogo[keyConteneur2].style.width = "40%";
+      }
+    }
+  }
+})

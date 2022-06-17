@@ -31,7 +31,6 @@ body{
 
 header{
     padding : 0 5%;
-    height: 5vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -44,6 +43,8 @@ header button, header a p{
     border: none;
     text-decoration: underline;
     cursor : pointer;
+    padding : 5%;
+    box-sizing: content-box;
 }
 
 main{
@@ -265,7 +266,7 @@ main{
     height: 100%;
     background-color: rgba(255,255,255,0.4);
     z-index: 1;
-    opacity: 0;
+    display: none;
     transition-duration: 0.5s;
 }
 
@@ -296,7 +297,7 @@ main{
 }
 
 .conteneurPhoto{
-    width: min(50%, 300px);
+    width: 45%;
     margin: 0 2.5% 5%;
     position: relative;
     display: flex;
@@ -334,7 +335,7 @@ main{
 
 .conteneurLogo{
     position:relative;
-    width:max(10%,50px);
+    width:10%;
     margin : 2%;
     display: flex;
     align-items: center;
@@ -442,6 +443,45 @@ main{
     #formulaire > button{
         font-size: 0.5rem;
     }
+
+    header button, header a p{
+        font-size: 0.6rem;
+    }
+
+    .archiverProjet{
+        left: -0.2rem;
+        width: 0.4rem;
+        height: 6rem;
+    }
+
+    .supprimerProjet, .suppression{
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 1rem;
+        top:-0.6rem;
+        left:calc(100% - 0.6rem);
+    }
+
+    .conteneurPhoto{
+        width: 100%;
+    }
+    
+    .conteneurLogo{
+        width:25%;
+    }
+
+    .modifier{
+        font-size: 0.6rem;
+    }
+
+    .archiverProjet label{
+        width: 0.4rem;
+        height: 4rem;
+    }
+
+    .archiverProjet input:checked ~ label{
+        top:2rem;
+    }
 }
 
 @media screen and (max-width:599px){
@@ -456,5 +496,25 @@ main{
     #formulaire > div{
         display: flex;
         flex-direction: column;
+    }
+
+    header button, header a p{
+        font-size: 1rem;
+    }
+
+    .supprimerProjet, .suppression{
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 1.2rem;
+        top:-0.75rem;
+        left:calc(100% - 0.75rem);
+    }
+
+    .modifier{
+        font-size: 1rem;
+    }
+
+    .conteneurLogo{
+        width:40%;
     }
 }
